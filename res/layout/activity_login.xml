@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/default_style" >
+    <LinearLayout 
+        android:id="@+id/login_input"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:orientation="vertical"
+        >
+
+        <TextView
+            android:id="@+id/login_xuetangx_text"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_marginBottom="45dp"
+            android:gravity="center"
+            android:text="@string/xuetangx"
+            android:textColor="#EEEEEE"
+            android:textSize="35sp" />
+        
+        <com.xuetangx.ui.ClearEditText 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/login_user"
+            android:drawableRight="@drawable/clear_pressed"
+            android:id="@+id/login_user" 
+            android:background="@drawable/login_editbox"
+            android:textSize="17sp"
+            android:singleLine="true"
+            android:hint="@string/username"  
+            android:layout_marginBottom="5dp"          
+            />
+        <com.xuetangx.ui.ClearEditText 
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/login_key"
+            android:drawableRight="@drawable/clear_pressed"
+            android:id="@+id/login_password"
+            android:layout_below="@id/login_user" 
+            android:background="@drawable/login_editbox"
+            android:textSize="17sp"
+            android:singleLine="true"
+            android:hint="@string/password"
+            android:password="true"   
+            android:layout_marginBottom="10dp"       
+            />
+        <Button
+            android:id="@+id/login_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true"
+	        android:background="@drawable/btn_style_red"
+	        android:textColor="#eeeeee"
+	        android:textSize="17sp"
+	        android:padding="10dp"
+	        android:layout_marginTop="5dp"
+	        android:layout_below="@id/login_password"
+	        android:onClick="login"
+	        android:clickable="true"
+	        android:text="@string/login_btn"/>
+   </LinearLayout>
+   
+   <LinearLayout
+        android:id="@+id/login_bottom_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="5dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:gravity="center" >
+
+        <TextView
+            android:id="@+id/login_register"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginRight="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/register"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+
+        <TextView
+            android:id="@+id/login_forgetpassword"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="5dp"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="@string/forgetpassword"
+            android:textColor="#eeeeee"
+            android:textSize="18sp" />
+    </LinearLayout>
+
+    <RelativeLayout
+        android:id="@+id/login_loading_layout"
+        android:layout_width="180dp"
+        android:layout_height="180dp"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        android:background="#88888888" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:gravity="center"
+            android:orientation="vertical" >
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleLarge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/loading_content"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="@string/logining"
+                android:textColor="#fff"
+                android:textSize="15sp" />
+        </LinearLayout>
+    </RelativeLayout>
+
+</RelativeLayout>

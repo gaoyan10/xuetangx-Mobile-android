@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">学堂在线</string>
+    <string name="xuetangx">学堂在线</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_world">Hello world!</string>
+	<string name="boot_bottom_text">探索来自学堂在线的MOOC课程</string>
+	<string name="copyright">2013 版权所有：学堂在线</string>
+    <string name="username">注册邮箱</string>
+    <string name="password">密码</string>
+    <string name="login">登录</string>
+    <string name="login_btn">登录学堂在线</string>
+    <string name="forgetpassword">忘记密码</string>
+    <string name="register">用户注册</string>
+    <string name="register_tips">注册你的学堂在线账户</string>
+    <string name="logining">正在登录。。。</string>
+    <string name="registering">正在注册。。。</string>
+    <string name="login_error_input">邮箱或者密码不能为空</string>
+    <string name="login_error_email">邮箱形式不合法</string>
+    <string name="json_syntax_error">返回数据格式错误</string>
+    <string name="json_status_error">获取数据失败</string>
+    <string name="forget_password_tips">请使用网页版重置密码</string>
+    <string name="web_login_url">https://www.xuetangx.com/login</string>
+    <string name="close">关闭</string>
+    <string name="email">注册邮箱</string>
+    <string name="confirm_password">确认密码</string>
+    <string name="username_f">公开用户名</string>
+    <string name="full_name">全名比如：张三</string>
+    <string name="password_confirm_error">两次密码不一致</string>
+    <string name="input_error_empty">不能为空</string>
+    <string name="account_setting">账户设置</string>
+    <string name="current_account">当前账户</string>
+    <string name="video_history">观看历史</string>
+    <string name="video_network_mobile">允许2G/3G下观看视频</string>
+    <string name="video_cache">缓存视频</string>
+    <string name="about_me">关于我们</string>
+    <string name="usage_help">使用帮助</string>
+    <string name="about">关于</string>
+    <string name="new_version">版本更新</string>
+    <string name="feedback">意见反馈</string>
+    <string name="mycourse">我的课程</string>
+    <string name="search">发现课程</string>
+    <string name="setting">个人设置</string>
+</resources>
