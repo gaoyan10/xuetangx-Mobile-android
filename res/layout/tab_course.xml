@@ -20,5 +20,10 @@
             android:text="@string/xuetangx"
             />
     </RelativeLayout>
-
+    <ListView 
+        android:id="@+id/course_listview"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        ></ListView>
 </LinearLayout>

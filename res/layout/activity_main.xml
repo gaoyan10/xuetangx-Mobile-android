@@ -21,6 +21,7 @@
             android:paddingBottom="2dp"            
         	>
             <LinearLayout
+                android:id="@+id/main_bottom_course_layout"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
               	android:gravity="center_horizontal"
@@ -42,6 +43,7 @@
             		android:textSize="12sp" />                
         	 </LinearLayout>
         	 <LinearLayout
+        	    android:id="@+id/main_bottom_search_layout"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
               	android:gravity="center_horizontal"
@@ -64,20 +66,21 @@
         	 </LinearLayout>
         	 
         	 <LinearLayout
+        	    android:id="@+id/main_bottom_setting_layout"
             	android:layout_width="wrap_content"
             	android:layout_height="wrap_content"
               	android:gravity="center_horizontal"
               	android:orientation="vertical"
               	android:layout_weight="1">               	
                 <ImageView
-            		android:id="@+id/tab_bottom_setting"
+            		android:id="@+id/main_bottom_setting"
         			android:layout_width="wrap_content"
         			android:layout_height="wrap_content"        	     	
         			android:scaleType="matrix"
         			android:clickable="true"
         			android:src="@drawable/tab_settings_normal" />
                 <TextView
-                    android:id="@+id/tab_bottom_setting_text"
+                    android:id="@+id/main_bottom_setting_text"
             		android:layout_width="wrap_content"
             		android:layout_height="wrap_content"
             		android:text="@string/setting"

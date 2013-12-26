@@ -32,6 +32,11 @@
             android:name="com.xuetangx.gui.MainActivity"
             android:theme="@android:style/Theme.NoTitleBar">
         </activity>
+        <activity 
+            android:name="com.xuetangx.gui.AboutActivity"
+            android:theme="@android:style/Theme.NoTitleBar"
+            >
+        </activity>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

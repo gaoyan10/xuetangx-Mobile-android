@@ -4,6 +4,8 @@
    <color name="gray_color">#555555</color>
    <color name="black_text">#222222</color>
    <color name="white_color">#eeeeee</color>
+   <color name="half_gray_color">#88444444</color>
    <drawable name="main_color">#9b3285</drawable>
    <drawable name="orange_color">#f39801</drawable>
+   <drawable name="gray_color">#555555</drawable>
 </resources>

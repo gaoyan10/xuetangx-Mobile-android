@@ -42,4 +42,7 @@
     <string name="mycourse">我的课程</string>
     <string name="search">发现课程</string>
     <string name="setting">个人设置</string>
+    <string name="error_page">https://www.xuetangx.com/404</string>
+    <string name="about_me_url">https://www.xuetangx.com/about</string>
+    <string name="usage_help_url">https://www.xuetangx.com/about#contact</string>
 </resources>

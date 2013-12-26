@@ -1,17 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
+    android:layout_height="43dp"
     android:paddingLeft="10dp"
     android:paddingRight="10dp"
     android:id="@+id/setting_item_switch"
-    android:background="@drawable/setting_item_background">    
+    android:background="@drawable/setting_style_item">    
     <ImageView 
         android:id="@+id/setting_item_switch_left_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         android:src="@drawable/setting_left_icon"
         />
     <TextView 
@@ -21,13 +21,16 @@
         android:layout_toRightOf="@id/setting_item_switch_left_icon"
         android:layout_marginLeft="5dp"
         android:textColor="@color/black_text"
+        android:layout_centerVertical="true"
         android:textSize="18sp"/>
     <com.xuetangx.ui.SwitchButton 
         android:id="@+id/setting_item_switch_right_icon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:maxHeight="30dp"
+        android:maxWidth="55dp"
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
-        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
         />
 </RelativeLayout>
