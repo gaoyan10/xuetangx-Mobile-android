@@ -8,12 +8,14 @@ import android.content.Context;
 import android.graphics.drawable.Drawable;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xuetangx.R;
 import com.xuetangx.util.ConstantUtils;
@@ -24,6 +26,7 @@ public class CourseTab extends BaseAdapter {
 		public RelativeLayout image;
 		public TextView courseName, couseStartTime;
 		public TextView enter, update;
+		public LinearLayout enterLayout, updateLayout;
 	}
 	private ArrayList<Map<String, Object>> data;
 	private Context context;
@@ -63,6 +66,7 @@ public class CourseTab extends BaseAdapter {
 	@Override
 	public View getView(int index, View view, ViewGroup arg2) {
 		// TODO Auto-generated method stub
+		final int finalIndex = index;
 		ViewHolder holder = null;
 		if(view == null) {
 			holder = new ViewHolder();
@@ -73,6 +77,8 @@ public class CourseTab extends BaseAdapter {
 			holder.couseStartTime = (TextView)view.findViewById(R.id.item_course_message_starttime);
 			holder.enter = (TextView)view.findViewById(R.id.item_course_enter_text);
 			holder.update = (TextView)view.findViewById(R.id.item_course_update_text);
+			holder.enterLayout = (LinearLayout)view.findViewById(R.id.item_course_enter);
+			holder.updateLayout = (LinearLayout)view.findViewById(R.id.item_course_update);
 			if(ConstantUtils.SCREENHEIGHT > 0) {
 				LinearLayout right = (LinearLayout)view.findViewById(R.id.item_right_layout);
 				right.getLayoutParams().height = ConstantUtils.SCREENHEIGHT / 5;
@@ -88,9 +94,37 @@ public class CourseTab extends BaseAdapter {
 		holder.couseStartTime.setText((String)data.get(index).get("starttime"));
 		holder.enter.setText((String)data.get(index).get("enter"));
 		holder.update.setText((String)data.get(index).get("update"));
-		
+		OnClickListener enterListener = new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				enterCourse(finalIndex);
+			}
+			
+		};
+		OnClickListener updateListener = new OnClickListener(){
+
+			@Override
+			public void onClick(View v) {
+				// TODO Auto-generated method stub
+				updateMessage(finalIndex);
+			}
+			
+		};
+		holder.enter.setOnClickListener(enterListener);
+		//holder.enterLayout.setOnClickListener(enterListener);
+		holder.update.setOnClickListener(updateListener);
+		//holder.updateLayout.setOnClickListener(updateListener);
+		holder.image.setOnClickListener(enterListener);
 		return view;
 	}
+	public void enterCourse(int index) {
+		Toast.makeText(context, "enter course " + index, Toast.LENGTH_SHORT).show();
+	}
+	public void updateMessage(int index) {
+		Toast.makeText(context, "update course" + index, Toast.LENGTH_SHORT).show();
+	} 
 
 }
 

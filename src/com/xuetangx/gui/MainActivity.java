@@ -97,6 +97,12 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		setting = new SettingTab(this,view3);
 		courseAdapter = new CourseTab(this, view1);
 		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
 		course = (ListView)view1.findViewById(R.id.course_listview);
 		course.setAdapter(courseAdapter);
 	}

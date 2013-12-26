@@ -2,13 +2,18 @@ package com.xuetangx.gui;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.view.View;
 import android.webkit.WebView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xuetangx.R;
 import com.xuetangx.browser.DefaultWebView;
-
+/**
+ * 
+ * @author gaoyansansheng@gmail.com
+ *
+ */
 public class AboutActivity extends Activity {
 	private DefaultWebView webView;
 	private ProgressBar progress;
@@ -33,6 +38,9 @@ public class AboutActivity extends Activity {
 		}
 		webView.setBrowser(true, true, true,null);
 		
+	}
+	public void backButton(View v) {
+		this.finish();
 	}
 	
 }
