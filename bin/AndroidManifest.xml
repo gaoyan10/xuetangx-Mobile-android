@@ -17,7 +17,7 @@
         <activity
             android:name="com.xuetangx.gui.BootActivity"
             android:label="@string/app_name"
-            android:theme="@android:style/Theme.Translucent.NoTitleBar" >
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -26,16 +26,18 @@
         </activity>
         <activity 
             android:name="com.xuetangx.gui.LoginActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
             android:windowSoftInputMode="stateHidden|adjustResize">
         </activity>
         <activity
             android:name="com.xuetangx.gui.MainActivity"
-            android:theme="@android:style/Theme.NoTitleBar">
+            >
         </activity>
         <activity 
             android:name="com.xuetangx.gui.AboutActivity"
-            android:theme="@android:style/Theme.NoTitleBar"
+            >
+        </activity>
+        <activity 
+            android:name="com.xuetangx.gui.CourseActivity"
             >
         </activity>
     </application>

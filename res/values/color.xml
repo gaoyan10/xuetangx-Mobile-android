@@ -8,4 +8,5 @@
    <drawable name="main_color">#9b3285</drawable>
    <drawable name="orange_color">#f39801</drawable>
    <drawable name="gray_color">#555555</drawable>
+   <drawable name="white_color">#eeeeee</drawable>
 </resources>

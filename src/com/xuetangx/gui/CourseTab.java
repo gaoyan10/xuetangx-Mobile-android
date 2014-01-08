@@ -5,7 +5,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.drawable.Drawable;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -117,10 +119,16 @@ public class CourseTab extends BaseAdapter {
 		holder.update.setOnClickListener(updateListener);
 		//holder.updateLayout.setOnClickListener(updateListener);
 		holder.image.setOnClickListener(enterListener);
+
 		return view;
 	}
 	public void enterCourse(int index) {
 		Toast.makeText(context, "enter course " + index, Toast.LENGTH_SHORT).show();
+		Intent intent = new Intent(context, CourseActivity.class);
+		Bundle b = new Bundle();
+		b.putString("title", "中国建筑史");
+		intent.putExtras(b);
+		context.startActivity(intent);
 	}
 	public void updateMessage(int index) {
 		Toast.makeText(context, "update course" + index, Toast.LENGTH_SHORT).show();

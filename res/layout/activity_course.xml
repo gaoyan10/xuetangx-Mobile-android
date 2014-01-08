@@ -37,7 +37,8 @@
         android:drawSelectorOnTop="false"
         android:cacheColorHint="@color/white_color"
         android:divider="@color/black_text"
-        android:dividerHeight="2dp"
+        android:dividerHeight="1dp"
+        android:layout_marginTop="3dp"
         >
         </ExpandableListView>
 </LinearLayout>
