@@ -1,6 +1,8 @@
 package com.xuetangx.util;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import android.content.Context;
 import android.content.pm.ApplicationInfo;
@@ -70,5 +72,12 @@ public class Utils {
     public static int px2dip(Context context, float pxValue){                  
         final float scale = context.getResources().getDisplayMetrics().density;                   
         return (int)(pxValue / scale + 0.5f);           
-    } 
+    }
+    public static boolean checkEmail(String email) {
+    	String check = "^([a-z0-9A-Z]+[-|\\.]?)+[a-z0-9A-Z]@([a-z0-9A-Z]+(-[a-z0-9A-Z]+)?\\.)+[a-zA-Z]{2,}$";
+    	Pattern regex = Pattern.compile(check);
+    	Matcher matcher = regex.matcher(email);
+    	boolean isMatched = matcher.matches();
+    	return isMatched;
+    }
 }

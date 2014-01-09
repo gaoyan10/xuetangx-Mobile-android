@@ -40,6 +40,12 @@
             android:name="com.xuetangx.gui.CourseActivity"
             >
         </activity>
+        <receiver 
+            android:name="com.xuetangx.core.background.BootImageReceiver">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>"
+            </intent-filter>
+        </receiver>"
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
 </manifest>

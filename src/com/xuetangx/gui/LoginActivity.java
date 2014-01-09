@@ -5,9 +5,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.RelativeLayout;
+import android.widget.Toast;
 
 import com.xuetangx.R;
 import com.xuetangx.ui.ClearEditText;
+import com.xuetangx.util.Utils;
 /**
  * login activity.
  * if the secret token is expired, the user should login on this page.
@@ -26,7 +28,20 @@ public class LoginActivity extends Activity {
 		password = (ClearEditText) findViewById(R.id.login_password);
 	}
 	public void login(View v) {
-		Intent intent = new Intent(this, MainActivity.class);
-		startActivity(intent);
+		String userName = username.getText().toString();
+		String passWord = password.getText().toString();
+		if(userName.length() == 0 || passWord.length() == 0) {
+			Toast.makeText(this, this.getResources().getString(R.string.login_error_input), Toast.LENGTH_SHORT).show();
+		} else {
+			if(Utils.checkEmail(userName)) {
+				Intent intent = new Intent(this, MainActivity.class);
+				startActivity(intent);
+				
+			}else {
+				Toast.makeText(this, this.getResources().getString(R.string.login_error_email), Toast.LENGTH_SHORT).show();
+			}
+		}
+		
 	}
+	
 }

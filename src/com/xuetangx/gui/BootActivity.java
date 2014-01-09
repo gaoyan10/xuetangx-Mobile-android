@@ -1,16 +1,23 @@
 package com.xuetangx.gui;
 
+import java.io.File;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import com.xuetangx.R;
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
+
+import com.xuetangx.R;
+import com.xuetangx.util.ConstantUtils;
+import com.xuetangx.util.PreferenceUtils;
 /**
  * The application boot page.
  * loading data for mainActivity.
@@ -57,6 +64,17 @@ public class BootActivity extends Activity {
 		}, 2500l);
 	}
 	public void checkNewImage() {
-		
+	    PreferenceUtils pre = new PreferenceUtils(this, ConstantUtils.USER_PRE);
+	    boolean isNewImage = pre.getBoolean(ConstantUtils.BOOT_IMAGE_DISPLAY, false);
+	    if(isNewImage) {
+	    	File file = new File(ConstantUtils.BOOT_IMAGE);
+	    	if (file.exists()) {
+	    		Bitmap bitmap = BitmapFactory.decodeFile(this.getExternalCacheDir().getAbsolutePath()  + "/" + ConstantUtils.BOOT_IMAGE);
+	    		newPage.setVisibility(View.VISIBLE);
+		    	defaultPage.setVisibility(View.GONE);
+		    	newPage.setBackgroundDrawable(new BitmapDrawable(bitmap));
+	    	}
+	    	
+	    }
 	}
 }

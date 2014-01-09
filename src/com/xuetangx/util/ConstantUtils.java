@@ -18,4 +18,7 @@ public class ConstantUtils {
 	public static final String DEFAULT_PRE = "prefrence";
 	public static final String SD_PATH = "save_path";
 	public static final String KEY_PATH = "secret_preference";
+	public static final String USER_PRE = "userdata";
+	public static final String BOOT_IMAGE = "bootimage";
+	public static final String BOOT_IMAGE_DISPLAY = "boot_image_display";
 }
