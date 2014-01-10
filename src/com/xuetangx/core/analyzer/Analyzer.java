@@ -1,6 +1,6 @@
 package com.xuetangx.core.analyzer;
 
-import org.json.JSONObject;
+import com.xuetangx.core.connect.ResponseMessage;
 /**
  * interface for analyzer json。
  * @author gaoyansansheng@gmail.com
@@ -9,4 +9,5 @@ import org.json.JSONObject;
 public interface Analyzer {
 	public boolean analyseJson(String json, int code);
 	public String createJson();
+	public ResponseMessage connect();
 }

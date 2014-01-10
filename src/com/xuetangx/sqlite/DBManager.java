@@ -13,7 +13,7 @@ public class DBManager {
 	private SQLiteDatabase db;
 	private String tableName;
 	public DBManager(Context c,  String tableName) {
-		helper = new DBHelper(c, tableName);
+		helper = new DBHelper(c, tableName, "");
 		db = helper.getWritableDatabase();
 		this.tableName = tableName;
 	}

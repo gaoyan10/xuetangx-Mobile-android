@@ -21,4 +21,6 @@ public class ConstantUtils {
 	public static final String USER_PRE = "userdata";
 	public static final String BOOT_IMAGE = "bootimage";
 	public static final String BOOT_IMAGE_DISPLAY = "boot_image_display";
+	public static final String COURSE_DATA = "coursedata.db";
+	public static final String USER_DATA = "userdata.db";
 }

@@ -132,5 +132,11 @@
                 android:textSize="15sp" />
         </LinearLayout>
     </RelativeLayout>
+    <include 
+        android:id="@+id/login_activity_loading"
+        layout="@layout/loading"
+        android:layout_width="180dp"
+        android:layout_height="180dp" 
+        android:layout_centerInParent="true"/>
 
 </RelativeLayout>

@@ -8,6 +8,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.xuetangx.R;
+import com.xuetangx.core.analyzer.LoginAnalyzer;
 import com.xuetangx.ui.ClearEditText;
 import com.xuetangx.util.Utils;
 /**
@@ -19,6 +20,7 @@ import com.xuetangx.util.Utils;
 public class LoginActivity extends Activity {
 	private RelativeLayout progressBar;
     private ClearEditText username, password;
+    private LoginAnalyzer analyzer;
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,6 +28,7 @@ public class LoginActivity extends Activity {
 		progressBar = (RelativeLayout)findViewById(R.id.login_loading_layout);
 		username = (ClearEditText) findViewById(R.id.login_user);
 		password = (ClearEditText) findViewById(R.id.login_password);
+		analyzer = new LoginAnalyzer(this);
 	}
 	public void login(View v) {
 		String userName = username.getText().toString();
@@ -34,6 +37,8 @@ public class LoginActivity extends Activity {
 			Toast.makeText(this, this.getResources().getString(R.string.login_error_input), Toast.LENGTH_SHORT).show();
 		} else {
 			if(Utils.checkEmail(userName)) {
+				analyzer.setContent(userName, passWord);
+				
 				Intent intent = new Intent(this, MainActivity.class);
 				startActivity(intent);
 				
