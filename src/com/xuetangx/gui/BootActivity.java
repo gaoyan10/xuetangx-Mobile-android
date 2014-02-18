@@ -16,8 +16,10 @@ import android.view.animation.AnimationUtils;
 import android.widget.RelativeLayout;
 
 import com.xuetangx.R;
+import com.xuetangx.core.background.BootImageReceiver;
 import com.xuetangx.util.ConstantUtils;
 import com.xuetangx.util.PreferenceUtils;
+import com.xuetangx.util.Utils;
 /**
  * The application boot page.
  * loading data for mainActivity.
@@ -48,21 +50,34 @@ public class BootActivity extends Activity {
 	}
 	public void startActivity() {
 		Intent intent = new Intent(this, LoginActivity.class);
+		Bundle b = new Bundle();
+		b.putString("username", Utils.getUserName());
+		intent.putExtras(b);
 		startActivity(intent);
 		this.finish();
 	}
 	public void openLoginActivity() {
-		Timer timer = new Timer();
-		timer.schedule(new TimerTask() {
-
-			@Override
-			public void run() {
-				// TODO Auto-generated method stub
-				startActivity();
-			}
+		Utils.initialUserMessage(this);
+		if (Utils.getAccessToken() != null) { //access token 未过期。
 			
-		}, 2500l);
+		}else{
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					startActivity();
+				}
+				
+			}, 1500l);
+		}
+		
 	}
+	/**
+	 * check new image and change the boot image.
+	 * download the new image if it exists.
+	 */
 	public void checkNewImage() {
 	    PreferenceUtils pre = new PreferenceUtils(this, ConstantUtils.USER_PRE);
 	    boolean isNewImage = pre.getBoolean(ConstantUtils.BOOT_IMAGE_DISPLAY, false);
@@ -76,5 +91,11 @@ public class BootActivity extends Activity {
 	    	}
 	    	
 	    }
+	    Thread downThread = new Thread() {
+	    	public void run() {
+	    		BootImageReceiver.downloadBootImage(BootActivity.this);
+	    	}
+	    };
+	    downThread.start();
 	}
 }

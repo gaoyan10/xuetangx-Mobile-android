@@ -18,24 +18,28 @@ public class BootImageReceiver extends BroadcastReceiver {
 	public void onReceive(Context context, Intent intent) {
 		// TODO Auto-generated method stub
 		if(intent.getAction().equals("android.net.conn.CONNECTIVITY_CHANGE")) {
-			NetConnector conn = NetConnector.getInstance();
-			ResponseMessage msg =  conn.httpGet("tmp", null); //uncomplete.
-			String url = msg.message;
-			int hash = url.hashCode();
-			PreferenceUtils pre = new PreferenceUtils(context, ConstantUtils.USER_PRE);
-			if(pre.getInteger(ConstantUtils.BOOT_IMAGE, 0) != hash) {
-				File file = new File(context.getExternalCacheDir(), ConstantUtils.BOOT_IMAGE);
-				if(!file.exists()){
-					try {
-						file.createNewFile();
-					} catch (IOException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+			downloadBootImage(context);
+		}
+	}
+	public static void downloadBootImage(Context context) {
+		NetConnector conn = NetConnector.getInstance();
+		ResponseMessage msg =  conn.httpGet("tmp", null); //uncomplete.
+		String url = msg.message;
+		int hash = url.hashCode();
+		PreferenceUtils pre = new PreferenceUtils(context, ConstantUtils.USER_PRE);
+		if(pre.getInteger(ConstantUtils.BOOT_IMAGE, 0) != hash) {
+			File file = new File(context.getExternalCacheDir(), ConstantUtils.BOOT_IMAGE);
+			if(!file.exists()){
+				try {
+					file.createNewFile();
+				} catch (IOException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
 				}
-				conn.downloadImage(url, file);
 			}
-			
+			if(conn.downloadImage(url, file)) {
+				pre.putInteger(ConstantUtils.BOOT_IMAGE, hash);
+			}
 		}
 	}
 

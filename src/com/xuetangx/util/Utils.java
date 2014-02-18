@@ -1,5 +1,6 @@
 package com.xuetangx.util;
 
+import java.util.HashMap;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -9,9 +10,12 @@ import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
 
+import com.xuetangx.sqlite.UserDBManager;
+
 public class Utils {
+	private static String username;
+	private static String accessToken;
 	public Utils() {
-		
 	}
 	public static String getAPIKey(Context c) {
 		ApplicationInfo appInfo;
@@ -28,6 +32,33 @@ public class Utils {
 		}else {
 			return "";
 		}
+	}
+	public static void initialUserMessage(Context c) {
+		UserDBManager manager = UserDBManager.getUserDBManager(c);
+		HashMap<String, Object> data = manager.getUserMessage();
+		manager.closeDB();
+		if (data == null) {
+			username = "";
+			accessToken = null;
+		}
+		username = (String)data.get("username");
+		long begin = Long.getLong((String)data.get("start_time"));
+		int expires = (Integer)(data.get("expires_in"));
+		if (expires * 600 * 1000 + begin > (System.currentTimeMillis() - 1000 * 3600 * 24)) { //token is expires.
+			accessToken = null;
+		}else{
+			accessToken = data.get("access_token").toString();
+		}
+	}
+	public static void initialUserMessage(String u, String p) {
+		username = u;
+		accessToken = p;
+	}
+	public static String getUserName() {
+		return username;
+	}
+	public static String getAccessToken() {
+		return accessToken;
 	}
 	public static String getSecretToken(Context c, String filename) {
 		PreferenceUtils pre = new PreferenceUtils(c, filename);

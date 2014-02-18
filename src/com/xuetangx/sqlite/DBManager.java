@@ -10,12 +10,15 @@ import android.database.sqlite.SQLiteDatabase;
 public class DBManager {
 
 	private DBHelper helper;
-	private SQLiteDatabase db;
+	protected SQLiteDatabase db;
 	private String tableName;
 	public DBManager(Context c,  String tableName) {
 		helper = new DBHelper(c, tableName, "");
 		db = helper.getWritableDatabase();
 		this.tableName = tableName;
+	}
+	public DBManager() {
+		
 	}
 	public void add(int level, long time, String status) {
 		db.beginTransaction();

@@ -14,6 +14,9 @@ public class UserDBManager {
 		if(instance == null) {
 			instance = new UserDBManager(context);
 		}
+		if(!instance.db.isOpen()) {
+			instance.db = instance.helper.getWritableDatabase();
+		}
 		return instance;
 	}
 	private UserDBManager(Context c) {
@@ -32,7 +35,7 @@ public class UserDBManager {
 				throw new Exception();
 			}
 			db.execSQL("delete from current_user");
-			String sql = "insert into current_user values(?,?,?,?,?)";
+			String sql = "insert into current_user values(?,?,?,?,?,?)";
 			db.execSQL(sql, access);
 			return true;
 		}catch(Exception e) {
@@ -59,6 +62,7 @@ public class UserDBManager {
 				message.put("refresh_token", c.getString(c.getColumnIndex("refresh_token")));
 				message.put("scope", c.getString(c.getColumnIndex("scope")));
 				message.put("expires_in", c.getInt(c.getColumnIndex("expires_in")));
+				message.put("start_time", c.getString(c.getColumnIndex("start_time")));
 			}
 		}catch(Exception e) {
 			return null;
@@ -85,6 +89,8 @@ public class UserDBManager {
 		}
 		return null;
 	}
-	public String get
+	public void closeDB() {
+		db.close();
+	}
 
 }

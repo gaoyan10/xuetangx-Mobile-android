@@ -15,9 +15,11 @@ public class UserDBHelper extends SQLiteOpenHelper {
 	@Override
 	public void onCreate(SQLiteDatabase db) {
 		// TODO Auto-generated method stub
-		String sql = "create table if not exists current_user(username TEXT, access_token TEXT, scope TEXT, expires_in INTEGER, refresh_token TEXT)";
+		String sql = "create table if not exists "  + ConstantUtils.T_USER + "(username TEXT not null unique, access_token TEXT, scope TEXT, expires_in INTEGER, refresh_token TEXT, start_time TEXT)";
 		db.execSQL(sql);
-	}
+		db.execSQL("create table if not exists " + ConstantUtils.T_HISTORY + "(course_id TEXT not null unique, chapter TEXT, sequence TEXT, video TEXT, time long)");
+		db.execSQL("create table if not exists "+ ConstantUtils.T_DOWNLOAD + "(course_id TEXT not null unique, chapter TEXT, sequence TEXT, video TEXT, time long)");
+	}  
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
 		// TODO Auto-generated method stub

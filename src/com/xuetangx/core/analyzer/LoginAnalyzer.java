@@ -9,6 +9,7 @@ import android.content.Context;
 
 import com.xuetangx.core.connect.NetConnector;
 import com.xuetangx.core.connect.ResponseMessage;
+import com.xuetangx.sqlite.UserDBManager;
 import com.xuetangx.util.ConstantUtils;
 import com.xuetangx.util.Utils;
 
@@ -37,16 +38,24 @@ public class LoginAnalyzer implements Analyzer {
 				String scope = obj.getString("scope");
 				String expire = obj.getString("expires_in");
 				String refreshToken = obj.getString("refresh_token");
-						
+				String time = String.valueOf(System.currentTimeMillis());
+				String[] data = new String[]{username, accessToken, scope, expire, refreshToken, time};
+				UserDBManager manager = UserDBManager.getUserDBManager(context);
+				manager.insertAccess(data);
+				manager.closeDB();
+				Utils.initialUserMessage(username, accessToken);
+				return true;
 			}else{
 				//django-oauth2-provider
-				
+				return false;
 			}
 			
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}catch(Exception e) {
+			
 		}
 		return false;
 	}

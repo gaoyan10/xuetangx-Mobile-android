@@ -23,4 +23,10 @@ public class ConstantUtils {
 	public static final String BOOT_IMAGE_DISPLAY = "boot_image_display";
 	public static final String COURSE_DATA = "coursedata.db";
 	public static final String USER_DATA = "userdata.db";
+	public static final String T_ENROLLMENT = "enrollment";
+	public static final String T_COURSE = "course";
+	public static final String T_COURSE_DATA = "course_data";
+	public static final String T_USER = "current_user";
+	public static final String T_HISTORY = "history";
+	public static final String T_DOWNLOAD = "download";
 }
