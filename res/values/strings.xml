@@ -22,6 +22,8 @@
     <string name="json_syntax_error">返回数据格式错误</string>
     <string name="json_status_error">获取数据失败</string>
     <string name="forget_password_tips">请使用网页版重置密码</string>
+    <string name="invalid_client">客户端ID错误，请更换版本</string>
+    <string name="invalid_grant">用户名或者密码错误</string>
     <string name="web_login_url">https://www.xuetangx.com/login</string>
     <string name="close">关闭</string>
     <string name="email">注册邮箱</string>

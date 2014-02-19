@@ -87,6 +87,8 @@
             android:gravity="center"
             android:text="@string/register"
             android:textColor="#eeeeee"
+            android:clickable="true"
+            android:onClick="register"
             android:textSize="18sp" />
 
         <TextView
@@ -96,6 +98,8 @@
             android:layout_marginLeft="5dp"
             android:layout_weight="1"
             android:gravity="center"
+            android:clickable="true"
+            android:onClick="getBackPassword"
             android:text="@string/forgetpassword"
             android:textColor="#eeeeee"
             android:textSize="18sp" />

@@ -5,6 +5,7 @@ import java.util.HashMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import com.xuetangx.R;
 import android.content.Context;
 
 import com.xuetangx.core.connect.NetConnector;
@@ -29,7 +30,7 @@ public class LoginAnalyzer implements Analyzer {
 		password = p;
 	}
 	@Override
-	public boolean analyseJson(String json, int code) {
+	public String analyseJson(String json, int code) {
 		// TODO Auto-generated method stub
 		try {
 			if(code == 200) {
@@ -44,20 +45,31 @@ public class LoginAnalyzer implements Analyzer {
 				manager.insertAccess(data);
 				manager.closeDB();
 				Utils.initialUserMessage(username, accessToken);
-				return true;
+				return "success";
 			}else{
+				if(code == 400) {
+					JSONObject obj = new JSONObject(json);
+					String err = obj.getString("error");
+					if (err.equals("invalid_client")) {
+						return context.getResources().getString(R.string.invalid_client);
+					}
+					if (err.equals("invalid_grant")) {
+						return context.getResources().getString(R.string.invalid_grant);
+					}
+					
+				}
 				//django-oauth2-provider
-				return false;
 			}
 			
 			
 		} catch (JSONException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			return context.getResources().getString(R.string.json_syntax_error);
+			//e.printStackTrace();
 		}catch(Exception e) {
 			
 		}
-		return false;
+		return context.getResources().getString(R.string.json_status_error);
 	}
 
 	@Override

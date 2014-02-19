@@ -10,6 +10,7 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.xuetangx.R;
+import com.xuetangx.core.analyzer.Analyzer;
 import com.xuetangx.core.analyzer.LoginAnalyzer;
 import com.xuetangx.core.connect.ResponseMessage;
 import com.xuetangx.ui.ClearEditText;
@@ -40,7 +41,15 @@ public class LoginActivity extends Activity {
 	private Handler loginHandler = new Handler() {
 		@Override
 		public void handleMessage(Message msg) {
-			
+			if (progressBar.VISIBLE == View.VISIBLE) {
+				progressBar.setVisibility(View.GONE);
+			}
+			if (msg.what == 0) {
+				//success
+			}
+			if(msg.what == -1) {
+				Toast.makeText(LoginActivity.this, msg.obj.toString(),Toast.LENGTH_LONG).show();
+			}
 		}
 	};
 	public void login(View v) {
@@ -55,21 +64,32 @@ public class LoginActivity extends Activity {
 				new Thread() {
 					public void run() {
 						ResponseMessage msg = analyzer.connect();
-						boolean suc = analyzer.analyseJson(msg.message, msg.code);
+						String suc = analyzer.analyseJson(msg.message, msg.code);
 						Message message = loginHandler.obtainMessage();
-						if (suc) {
-							message
+						if (suc.equals("success")) {
+							message.what = 0;
+						}else {
+							message.what = -1;
+							message.obj = suc;
 						}
+						loginHandler.sendMessage(message);
 					}
-				};
-				Intent intent = new Intent(this, MainActivity.class);
-				startActivity(intent);
-				
+				}.start();
 			}else {
 				Toast.makeText(this, this.getResources().getString(R.string.login_error_email), Toast.LENGTH_SHORT).show();
 			}
 		}
 		
+	}
+	public void register(View view) {
+		
+	}
+	public void getBackPassword(View view) {
+		Intent intent = new Intent(this, GoToBrowserActivity.class);
+		Bundle b = new Bundle();
+		b.putString("title", this.getResources().getString(R.string.forget_password_tips));
+		intent.putExtras(b);
+		startActivity(intent);
 	}
 	
 }

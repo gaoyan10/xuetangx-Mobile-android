@@ -77,16 +77,51 @@ public class CourseDBManager extends DBManager {
 		return courseList;
 	}
 	public String queryOneCourseData(String courseID) {
-		Cursor c = db.query(ConstantUtils.T_COURSE_DATA, new String[]{"course_data"}, "course_id = ?", new String[]{courseID}, null, null, null, "1");
-		if( c.getColumnCount() == 0) {
-			return null;
-		}else {
-			return c.getString(1);
+		Cursor c = null;
+		try{
+			c = db.query(ConstantUtils.T_COURSE_DATA, new String[]{"course_data"}, "course_id = ?", new String[]{courseID}, null, null, null, "1");
+			if( c.getColumnCount() == 0) {
+				return null;
+			}else {
+				return c.getString(c.getColumnIndex("course_data"));
+			}
+		}
+		finally{
+			if(c != null) {
+				c.close();
+			}
 		}
 	}
-	public List<HashMap<String, String>> queryEnrollment() {
+	public HashMap<String, String> getEnrollmentItem(Cursor c) {
+		HashMap<String, String> map = new HashMap<String, String>();
+		try{
+			map.put("course_id", c.getString(c.getColumnIndex("course_id")));
+			map.put("display_name", c.getString(c.getColumnIndex("display_name")));
+			map.put("display_org", c.getString(c.getColumnIndex("display_org")));
+			map.put("start", c.getString(c.getColumnIndex("start")));
+			map.put("course_image_url", c.getString(c.getColumnIndex("course_image_url")));
+		}catch(Exception e) {
+			
+		}
+		return map;
+	}
+	public List<HashMap<String, String>> queryEnrollment(String username) {
 		List enrollment = new ArrayList<HashMap<String, String>>();
-		Cursor c = db.query(ConstantUtils.T_ENROLLMENT, null,  
+		Cursor c = null;
+		try{
+			c = db.query(ConstantUtils.T_ENROLLMENT, null, "username = ?", new String[]{username}, null, null, null);
+			c.moveToFirst();
+			while (!c.isAfterLast()) {
+				enrollment.add(getEnrollmentItem(c));
+				c.moveToNext();
+			}
+		}finally{
+			if (c != null) {
+				c.close();
+			}
+		}
+		
+		return enrollment;
 	}
 	/**
 	 * this must close 
