@@ -118,7 +118,14 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		setting = new SettingTab(this,view3);
 		courseAdapter = new CourseTab(this, view1);
 		ArrayList data = (ArrayList)getIntent().getSerializableExtra("data");
-		courseAdapter.setData(data);
+		courseAdapter.getData();courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		courseAdapter.getData();
+		//courseAdapter.setData(data);
 		course = (ListView)view1.findViewById(R.id.course_listview);
 		courseProgress = (ProgressBar)view1.findViewById(R.id.tab_course_title_progress);
 		searchProgress = (ProgressBar)view2.findViewById(R.id.tab_search_title_progress);

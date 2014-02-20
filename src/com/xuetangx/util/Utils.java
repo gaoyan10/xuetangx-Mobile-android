@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.pm.ApplicationInfo;
 import android.content.pm.PackageManager;
 import android.content.pm.PackageManager.NameNotFoundException;
+import android.os.Bundle;
 
 import com.xuetangx.sqlite.UserDBManager;
 
@@ -40,11 +41,15 @@ public class Utils {
 		if (data == null) {
 			username = "";
 			accessToken = null;
+			return;
 		}
 		username = (String)data.get("username");
-		long begin = Long.getLong((String)data.get("start_time"));
+		//long begin = Long.getLong(
+		String tmp = data.get("start_time").toString();
+		long begin = Long.valueOf(tmp);
+		//long begin = Long.getLong(tmp);
 		int expires = (Integer)(data.get("expires_in"));
-		if (expires * 600 * 1000 + begin > (System.currentTimeMillis() - 1000 * 3600 * 24)) { //token is expires.
+		if (expires * 600 * 1000 + begin <= (System.currentTimeMillis() - 1000 * 3600 * 24)) { //token is expires.
 			accessToken = null;
 		}else{
 			accessToken = data.get("access_token").toString();

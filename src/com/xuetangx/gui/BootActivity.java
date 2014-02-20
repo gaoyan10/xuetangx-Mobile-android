@@ -63,13 +63,24 @@ public class BootActivity extends Activity {
 	public void openLoginActivity() {
 		Utils.initialUserMessage(this);
 		if (Utils.getAccessToken() != null) { //access token 未过期。
-			CourseDBManager db = new CourseDBManager(BootActivity.this);
-			db.getDatabase();
-			List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
-			Intent intent = new Intent (BootActivity.this, MainActivity.class);
-			intent.putExtra("data",(ArrayList)data);
-			startActivity(intent);
+			
+			Timer timer = new Timer();
+			timer.schedule(new TimerTask() {
+
+				@Override
+				public void run() {
+					// TODO Auto-generated method stub
+					CourseDBManager db = new CourseDBManager(BootActivity.this);
+					db.getDatabase();
+					List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
+					Intent intent = new Intent (BootActivity.this, MainActivity.class);
+					intent.putExtra("data",(ArrayList)data);
+					startActivity(intent);  
+				}
+				
+			}, 1500l);
 			db.closeDB();
+			this.finish();
 		}else{
 			Timer timer = new Timer();
 			timer.schedule(new TimerTask() {

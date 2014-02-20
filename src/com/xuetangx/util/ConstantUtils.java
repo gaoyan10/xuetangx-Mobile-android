@@ -3,7 +3,7 @@ package com.xuetangx.util;
 public class ConstantUtils {
 	public static int SCREENWIDTH;
 	public static int SCREENHEIGHT;
-	public static final String URL = "http://mobile-api.tsinghuax.org/";//"https://yangao.apiary.io";
+	public static final String URL = "https://10.9.10.253:3000/";//"https://yangao.apiary.io";
 	public static final String KEY = "X-edx-api-key"; //注意X 大小写
 	public static final String ACCESS = "Authorization";
 	public static final String REGISTER = "edx-api/signup/v1/register";

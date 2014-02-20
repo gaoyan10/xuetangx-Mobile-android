@@ -31,18 +31,21 @@ public class UserDBManager {
 	public boolean insertAccess(String[] access) {
 		db.beginTransaction();
 		try {
-			if(access.length < 5) {
+			if(access.length < 6) {
 				throw new Exception();
 			}
 			db.execSQL("delete from current_user");
-			String sql = "insert into current_user values(?,?,?,?,?,?)";
+			String sql = "insert into current_user(username, access_token, scope, expires_in, refresh_token, start_time) values(?,?,?,?,?,?)";
 			db.execSQL(sql, access);
+			db.setTransactionSuccessful();
 			return true;
 		}catch(Exception e) {
-			return false;
+			Exception es = e;
+			e.printStackTrace();
 		} finally {
 			db.endTransaction();
 		}
+		return false;
 	}
 	/**
 	 * get all message.
@@ -52,7 +55,8 @@ public class UserDBManager {
 		HashMap<String, Object> message = new HashMap<String, Object>();
 		String sql = "select * from current_user";
 		Cursor c = db.rawQuery(sql, null);
-		if (c.getCount() > 1) {
+		int tmp = c.getCount();
+		if (c.getCount() != 1) {
 			return null;
 		}
 		try {

@@ -92,6 +92,7 @@ public class CourseTab extends BaseAdapter {
 				LinearLayout right = (LinearLayout)view.findViewById(R.id.item_right_layout);
 				right.getLayoutParams().height = ConstantUtils.SCREENHEIGHT / 5;
 				holder.image.getLayoutParams().height = ConstantUtils.SCREENHEIGHT / 5;
+				holder.image.getLayoutParams().width = ConstantUtils.SCREENWIDTH / 3 *2;
 			}
 			view.setTag(holder);
 			
