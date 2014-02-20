@@ -1,5 +1,9 @@
 package com.xuetangx.gui;
 
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
@@ -10,9 +14,9 @@ import android.widget.RelativeLayout;
 import android.widget.Toast;
 
 import com.xuetangx.R;
-import com.xuetangx.core.analyzer.Analyzer;
 import com.xuetangx.core.analyzer.LoginAnalyzer;
 import com.xuetangx.core.connect.ResponseMessage;
+import com.xuetangx.sqlite.CourseDBManager;
 import com.xuetangx.ui.ClearEditText;
 import com.xuetangx.util.Utils;
 /**
@@ -46,6 +50,14 @@ public class LoginActivity extends Activity {
 			}
 			if (msg.what == 0) {
 				//success
+				CourseDBManager db = new CourseDBManager(LoginActivity.this);
+				db.getDatabase();
+				List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
+				Intent intent = new Intent (LoginActivity.this, MainActivity.class);
+				intent.putExtra("data",(ArrayList)data);
+				startActivity(intent);
+				db.closeDB();
+				
 			}
 			if(msg.what == -1) {
 				Toast.makeText(LoginActivity.this, msg.obj.toString(),Toast.LENGTH_LONG).show();

@@ -7,7 +7,7 @@ import com.xuetangx.core.connect.ResponseMessage;
  *
  */
 public interface Analyzer {
-	public String analyseJson(String json, int code);
+	public Object analyseJson(String json, int code);
 	public String createJson();
 	public ResponseMessage connect();
 }

@@ -120,7 +120,6 @@ public class CourseDBManager extends DBManager {
 				c.close();
 			}
 		}
-		
 		return enrollment;
 	}
 	/**

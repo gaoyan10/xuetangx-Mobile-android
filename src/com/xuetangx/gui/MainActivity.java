@@ -1,9 +1,12 @@
 package com.xuetangx.gui;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import android.app.Activity;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
@@ -15,9 +18,14 @@ import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.xuetangx.R;
+import com.xuetangx.core.analyzer.EnrollmentAnalyzer;
+import com.xuetangx.core.connect.ResponseMessage;
+import com.xuetangx.sqlite.CourseDBManager;
 import com.xuetangx.util.ConstantUtils;
 public class MainActivity extends Activity implements OnClickListener, OnPageChangeListener{
 	private ViewPager pager; //切换
@@ -30,6 +38,19 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	private SettingTab setting;
 	private CourseTab courseAdapter;
 	private ListView course;
+	private ProgressBar courseProgress, searchProgress;
+	private CourseDBManager db;
+	private Handler courseHandler = new Handler() {
+		public void handleMessage(Message msg) {
+			courseProgress.setVisibility(View.GONE);
+			if (msg.what == 0) {
+				courseAdapter.setData((ArrayList)msg.obj);
+				courseAdapter.notifyDataSetChanged();
+			}else{
+				Toast.makeText(MainActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();;
+			}
+		}
+	};
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -96,15 +117,17 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		pager.setAdapter(mPagerAdapter);
 		setting = new SettingTab(this,view3);
 		courseAdapter = new CourseTab(this, view1);
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
+		ArrayList data = (ArrayList)getIntent().getSerializableExtra("data");
+		courseAdapter.setData(data);
 		course = (ListView)view1.findViewById(R.id.course_listview);
+		courseProgress = (ProgressBar)view1.findViewById(R.id.tab_course_title_progress);
+		searchProgress = (ProgressBar)view2.findViewById(R.id.tab_search_title_progress);
 		course.setAdapter(courseAdapter);
+		
+		db = new CourseDBManager(this);
+		
+		//refresh data.
+		getNewEnrollment();
 	}
 	public void getScreenMessage() {
 		Display display = getWindowManager().getDefaultDisplay();
@@ -168,6 +191,24 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	public void onPageSelected(int arg0) {
 		// TODO Auto-generated method stub
 		setTabChange(arg0);
+	}
+	public void getNewEnrollment() {
+		courseProgress.setVisibility(View.VISIBLE);
+		new Thread() {
+			public void run() {
+				EnrollmentAnalyzer analyzer = new EnrollmentAnalyzer(MainActivity.this);
+				ResponseMessage response = analyzer.connect();
+				Object obj = analyzer.analyseJson(response.message, response.code);
+				Message msg = courseHandler.obtainMessage();
+				if(obj instanceof List) {
+					msg.obj = obj;
+					msg.what = 0;
+				}else {
+					msg.what = (Integer)obj;
+				}
+				courseHandler.sendMessage(msg);
+			}
+		}.start();
 	}
 
 }

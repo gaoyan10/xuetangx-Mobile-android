@@ -126,14 +126,14 @@ public final class R {
         public static final int about_title_progress=0x7f0a0003;
         public static final int about_title_text=0x7f0a0002;
         public static final int about_webview=0x7f0a0004;
-        public static final int action_settings=0x7f0a004b;
+        public static final int action_settings=0x7f0a004d;
         public static final int activity_course_listview=0x7f0a000a;
         public static final int activity_course_title_back=0x7f0a0008;
         public static final int activity_course_title_layout=0x7f0a0007;
         public static final int activity_course_title_text=0x7f0a0009;
         public static final int boot_default_layout=0x7f0a0005;
         public static final int boot_page_image=0x7f0a0006;
-        public static final int course_listview=0x7f0a003f;
+        public static final int course_listview=0x7f0a0040;
         public static final int expand_item_left_icon=0x7f0a0039;
         public static final int expand_list_item=0x7f0a0038;
         public static final int extend_item_right_icon=0x7f0a003b;
@@ -176,9 +176,9 @@ public final class R {
         public static final int main_bottom_setting_text=0x7f0a0023;
         public static final int main_pager=0x7f0a0024;
         public static final int progressBar1=0x7f0a0017;
-        public static final int setting_about_me=0x7f0a004a;
-        public static final int setting_account_about=0x7f0a0048;
-        public static final int setting_account_setting=0x7f0a0044;
+        public static final int setting_about_me=0x7f0a004c;
+        public static final int setting_account_about=0x7f0a004a;
+        public static final int setting_account_setting=0x7f0a0046;
         public static final int setting_item=0x7f0a0026;
         public static final int setting_item_left_icon=0x7f0a0027;
         public static final int setting_item_right_icon=0x7f0a0029;
@@ -187,16 +187,18 @@ public final class R {
         public static final int setting_item_switch_right_icon=0x7f0a002d;
         public static final int setting_item_switch_text=0x7f0a002c;
         public static final int setting_item_text=0x7f0a0028;
-        public static final int setting_network_model=0x7f0a0047;
-        public static final int setting_title_layout=0x7f0a0042;
-        public static final int setting_title_text=0x7f0a0043;
-        public static final int setting_usage_help=0x7f0a0049;
-        public static final int setting_video_cache=0x7f0a0045;
-        public static final int setting_video_history=0x7f0a0046;
+        public static final int setting_network_model=0x7f0a0049;
+        public static final int setting_title_layout=0x7f0a0044;
+        public static final int setting_title_text=0x7f0a0045;
+        public static final int setting_usage_help=0x7f0a004b;
+        public static final int setting_video_cache=0x7f0a0047;
+        public static final int setting_video_history=0x7f0a0048;
         public static final int tab_course_title_layout=0x7f0a003d;
+        public static final int tab_course_title_progress=0x7f0a003f;
         public static final int tab_course_title_text=0x7f0a003e;
-        public static final int tab_search_title_layout=0x7f0a0040;
-        public static final int tab_search_title_text=0x7f0a0041;
+        public static final int tab_search_title_layout=0x7f0a0041;
+        public static final int tab_search_title_progress=0x7f0a0043;
+        public static final int tab_search_title_text=0x7f0a0042;
     }
     public static final class layout {
         public static final int activity_about=0x7f030000;

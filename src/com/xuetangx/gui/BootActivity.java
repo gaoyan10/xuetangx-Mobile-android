@@ -1,6 +1,9 @@
 package com.xuetangx.gui;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Timer;
 import java.util.TimerTask;
 
@@ -17,6 +20,7 @@ import android.widget.RelativeLayout;
 
 import com.xuetangx.R;
 import com.xuetangx.core.background.BootImageReceiver;
+import com.xuetangx.sqlite.CourseDBManager;
 import com.xuetangx.util.ConstantUtils;
 import com.xuetangx.util.PreferenceUtils;
 import com.xuetangx.util.Utils;
@@ -59,7 +63,13 @@ public class BootActivity extends Activity {
 	public void openLoginActivity() {
 		Utils.initialUserMessage(this);
 		if (Utils.getAccessToken() != null) { //access token 未过期。
-			
+			CourseDBManager db = new CourseDBManager(BootActivity.this);
+			db.getDatabase();
+			List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
+			Intent intent = new Intent (BootActivity.this, MainActivity.class);
+			intent.putExtra("data",(ArrayList)data);
+			startActivity(intent);
+			db.closeDB();
 		}else{
 			Timer timer = new Timer();
 			timer.schedule(new TimerTask() {

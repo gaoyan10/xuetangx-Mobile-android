@@ -2,6 +2,7 @@ package com.xuetangx.gui;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
@@ -38,6 +39,9 @@ public class CourseTab extends BaseAdapter {
 		parent = p;
 		data = new ArrayList<Map<String, Object>>();
 	}
+	/**
+	 * this is just for test UI.
+	 */
 	public void getData() {
 		HashMap map = new HashMap<String ,Object>();
 		map.put("background", context.getResources().getDrawable(R.drawable.images_course_image));
@@ -46,6 +50,9 @@ public class CourseTab extends BaseAdapter {
 		map.put("enter", "查看课程");
 		map.put("update", "20131102\n课程更新");
 		data.add(map);
+	}
+	public void setData(ArrayList data) {
+		this.data = data;
 	}
 	@Override
 	public int getCount() {
@@ -122,6 +129,7 @@ public class CourseTab extends BaseAdapter {
 
 		return view;
 	}
+	
 	public void enterCourse(int index) {
 		Toast.makeText(context, "enter course " + index, Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(context, CourseActivity.class);

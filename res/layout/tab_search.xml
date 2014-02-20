@@ -19,6 +19,15 @@
             android:textColor="#FFFFFF"
             android:text="@string/xuetangx"
             />
+        <ProgressBar 
+            android:id="@+id/tab_search_title_progress"
+            style="?android:attr/progressBarStyleSmallTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerVertical="true"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="10dp"
+            /> 
     </RelativeLayout>
     <com.xuetangx.ui.ClearEditText 
         android:layout_width="fill_parent"
