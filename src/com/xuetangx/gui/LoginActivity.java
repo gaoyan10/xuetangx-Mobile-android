@@ -57,6 +57,7 @@ public class LoginActivity extends Activity {
 				intent.putExtra("data",(ArrayList)data);
 				startActivity(intent);
 				db.closeDB();
+				LoginActivity.this.finish();
 				
 			}
 			if(msg.what == -1) {

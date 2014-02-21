@@ -47,6 +47,7 @@ public class CourseDBManager extends DBManager {
 		getDatabase();
 		db.beginTransaction();
 		try{
+			db.execSQL("delete from " + table);
 			for(HashMap<String, Object> item : data) {
 				ContentValues values = new ContentValues();
 				Iterator iter = item.entrySet().iterator(); 
@@ -54,7 +55,7 @@ public class CourseDBManager extends DBManager {
 					Map.Entry entry = (Map.Entry) iter.next(); 
 					values.put(entry.getKey().toString(), entry.getValue().toString());
 				} 
-				db.insert(ConstantUtils.T_COURSE, null, values);
+				db.insert(table, null, values);
 			}
 			db.setTransactionSuccessful();
 			return true;

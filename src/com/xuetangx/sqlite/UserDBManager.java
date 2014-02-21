@@ -94,7 +94,8 @@ public class UserDBManager {
 		return null;
 	}
 	public void closeDB() {
-		db.close();
+		if(db.isOpen())
+			db.close();
 	}
 
 }

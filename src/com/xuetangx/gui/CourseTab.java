@@ -100,10 +100,10 @@ public class CourseTab extends BaseAdapter {
 			holder = (ViewHolder)view.getTag();
 		}
 		holder.image.setBackgroundDrawable((Drawable)data.get(index).get("background"));
-		holder.courseName.setText((String)data.get(index).get("coursename"));
-		holder.couseStartTime.setText((String)data.get(index).get("starttime"));
-		holder.enter.setText((String)data.get(index).get("enter"));
-		holder.update.setText((String)data.get(index).get("update"));
+		holder.courseName.setText((String)data.get(index).get("display_name"));
+		holder.couseStartTime.setText((String)data.get(index).get("start"));
+		holder.enter.setText(context.getResources().getString(R.string.enter_course));
+		holder.update.setText(context.getResources().getString(R.string.enter_update));
 		OnClickListener enterListener = new OnClickListener(){
 
 			@Override

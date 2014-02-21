@@ -247,7 +247,7 @@ public final class R {
     public static final class string {
         public static final int about=0x7f070026;
         public static final int about_me=0x7f070024;
-        public static final int about_me_url=0x7f07002d;
+        public static final int about_me_url=0x7f07002f;
         public static final int account_setting=0x7f07001f;
         public static final int action_settings=0x7f070002;
         public static final int app_name=0x7f070000;
@@ -257,7 +257,9 @@ public final class R {
         public static final int copyright=0x7f070005;
         public static final int current_account=0x7f070020;
         public static final int email=0x7f070019;
-        public static final int error_page=0x7f07002c;
+        public static final int enter_course=0x7f07002c;
+        public static final int enter_update=0x7f07002d;
+        public static final int error_page=0x7f07002e;
         public static final int feedback=0x7f070028;
         public static final int forget_password_tips=0x7f070014;
         public static final int forgetpassword=0x7f07000a;
@@ -284,7 +286,7 @@ public final class R {
         public static final int search=0x7f07002a;
         public static final int setting=0x7f07002b;
         public static final int usage_help=0x7f070025;
-        public static final int usage_help_url=0x7f07002e;
+        public static final int usage_help_url=0x7f070030;
         public static final int username=0x7f070006;
         public static final int username_f=0x7f07001b;
         public static final int video_cache=0x7f070023;
