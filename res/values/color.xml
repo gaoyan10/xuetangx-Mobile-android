@@ -9,4 +9,5 @@
    <drawable name="orange_color">#f39801</drawable>
    <drawable name="gray_color">#555555</drawable>
    <drawable name="white_color">#eeeeee</drawable>
+   <drawable name="no_color">#00000000</drawable>
 </resources>

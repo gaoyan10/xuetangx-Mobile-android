@@ -41,12 +41,17 @@
             android:name="com.xuetangx.gui.CourseActivity"
             >
         </activity>
+        <activity
+            android:name="com.xuetangx.gui.VideoPlayerActivity"
+            android:screenOrientation="landscape"
+            >
+        </activity>
         <receiver 
             android:name="com.xuetangx.core.background.BootImageReceiver">
             <intent-filter>
                 <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>"
             </intent-filter>
-        </receiver>"
+        </receiver>
     </application>
     <uses-permission android:name="android.permission.INTERNET"/>
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
