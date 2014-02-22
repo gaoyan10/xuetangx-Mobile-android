@@ -1,14 +1,16 @@
 package com.xuetangx.gui;
 
+import java.io.File;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -21,9 +23,12 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.xuetangx.R;
+import com.xuetangx.core.connect.NetConnector;
 import com.xuetangx.util.ConstantUtils;
+import com.xuetangx.util.SDUtils;
 
 public class CourseTab extends BaseAdapter {
+	public static boolean isNewData = false;
 	public final class ViewHolder {
 		public ImageView courseImage;
 		public RelativeLayout image;
@@ -31,6 +36,15 @@ public class CourseTab extends BaseAdapter {
 		public TextView enter, update;
 		public LinearLayout enterLayout, updateLayout;
 	}
+	private Handler imageHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == 0) {
+				ImageObject obj = (ImageObject)msg.obj;
+				obj.setImage();
+			}
+		}
+	};
 	private ArrayList<Map<String, Object>> data;
 	private Context context;
 	private View parent;
@@ -99,7 +113,7 @@ public class CourseTab extends BaseAdapter {
 		}else{
 			holder = (ViewHolder)view.getTag();
 		}
-		holder.image.setBackgroundDrawable((Drawable)data.get(index).get("background"));
+		viewSetImage(holder.image, (String)data.get(index).get("course_image_url"));
 		holder.courseName.setText((String)data.get(index).get("display_name"));
 		holder.couseStartTime.setText((String)data.get(index).get("start"));
 		holder.enter.setText(context.getResources().getString(R.string.enter_course));
@@ -142,6 +156,42 @@ public class CourseTab extends BaseAdapter {
 	public void updateMessage(int index) {
 		Toast.makeText(context, "update course" + index, Toast.LENGTH_SHORT).show();
 	} 
+	public void viewSetImage(RelativeLayout view, String url) {
+		File image = new File(SDUtils.getImageDir(context), url.hashCode() + "");
+		if (image.exists()) {
+			view.setBackgroundDrawable(Drawable.createFromPath(image.getAbsolutePath()));
+		}else{
+			view.setBackgroundResource(R.drawable.images_course_image);
+			final String u = url;
+			final RelativeLayout v = view;
+			if (isNewData) {// new data
+				new Thread() {
+					public void run(){
+						File imageFile = new File(SDUtils.getImageDir(context), u.hashCode() + "");
+						boolean suc = NetConnector.getInstance().downloadImage(ConstantUtils.URL + u, imageFile);
+						if (suc) {
+							Message msg = imageHandler.obtainMessage();
+							msg.what = 0;
+							msg.obj = new ImageObject(v, imageFile);
+						}
+					}
+				}.start();
+			}
+		}
+	}
+	private class ImageObject{
+		View view;
+		File image;
+		public ImageObject(View v, File i) {
+			view = v;
+			image = i;
+		}
+		public void setImage() {
+			if(image.exists()) {
+				view.setBackgroundDrawable(Drawable.createFromPath(image.getAbsolutePath()));
+			}
+		}
+	}
 
 }
 

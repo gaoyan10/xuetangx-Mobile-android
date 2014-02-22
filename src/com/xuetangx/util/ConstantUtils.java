@@ -16,6 +16,8 @@ public class ConstantUtils {
 	public static final String COURSE_VEDIO = "edx-api/courseware/v1/";
 	public static final String COURSE_NUM = "course_num";
 	public static final String DEFAULT_PRE = "prefrence";
+	public static final String IMAGE_CACHE_PATH = "./xuetangx/images";
+	public static final String VIDEO_CACHE_PATH = "./xuetangx/video";
 	public static final String SD_PATH = "save_path";
 	public static final String KEY_PATH = "secret_preference";
 	public static final String USER_PRE = "userdata";

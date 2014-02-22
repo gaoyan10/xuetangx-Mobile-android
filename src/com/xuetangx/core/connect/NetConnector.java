@@ -176,8 +176,12 @@ public class NetConnector {
 	}
 
 	public boolean downloadImage(String url, File file) {
+		
 		HttpURLConnection conn = null;
 		try {
+			if(!file.exists()) {
+				file.createNewFile();
+			}
 			URL urls = new URL(url);
 			conn = (HttpURLConnection)urls.openConnection();
 			if(conn.getResponseCode() < 400) {

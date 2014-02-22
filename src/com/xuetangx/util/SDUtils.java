@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
+import android.content.Context;
 import android.os.Environment;
 
 public class SDUtils {
@@ -20,6 +21,33 @@ public class SDUtils {
 		}else {
 			return false;
 		}
+	}
+	public static File getImageDir(Context context) {
+		File dir = null;
+		if (!checkSDExit()) {
+			dir = context.getDir(ConstantUtils.IMAGE_CACHE_PATH, context.MODE_WORLD_WRITEABLE);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+		}else{
+			dir = new File(Environment.getExternalStorageDirectory(), ConstantUtils.IMAGE_CACHE_PATH);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+		}
+		return dir;
+	}
+	public static File getVideoDir() {
+		if (!checkSDExit()) {
+			return null;
+		} else{
+			File dir = new File(Environment.getExternalStorageDirectory(), ConstantUtils.VIDEO_CACHE_PATH);
+			if (!dir.exists()) {
+				dir.mkdirs();
+			}
+			return dir;
+		}
+		
 	}
 	public static int writeFile(String path, String name, String content) {
 		if (!checkSDExit()) {

@@ -132,6 +132,9 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 		// TODO Auto-generated method stub
 		return true;
 	}
+	public void setData(String json) {
+		
+	}
 	public void getTestData() {
 		parentList.add("1.中国古代建筑思想概述");
 		parentList.add("2.史前及夏商时期的中国建筑");

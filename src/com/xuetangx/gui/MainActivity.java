@@ -45,6 +45,7 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 			courseProgress.setVisibility(View.GONE);
 			if (msg.what == 0) {
 				courseAdapter.setData((ArrayList)msg.obj);
+				courseAdapter.isNewData = true;
 				courseAdapter.notifyDataSetChanged();
 			}else{
 				Toast.makeText(MainActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();;
