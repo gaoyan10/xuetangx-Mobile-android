@@ -147,7 +147,7 @@ public final class R {
         public static final int about_title_progress=0x7f0a0003;
         public static final int about_title_text=0x7f0a0002;
         public static final int about_webview=0x7f0a0004;
-        public static final int action_settings=0x7f0a0060;
+        public static final int action_settings=0x7f0a0061;
         public static final int activity_course_listview=0x7f0a000b;
         public static final int activity_course_title_back=0x7f0a0008;
         public static final int activity_course_title_layout=0x7f0a0007;
@@ -219,6 +219,7 @@ public final class R {
         public static final int setting_about_me=0x7f0a005f;
         public static final int setting_account_about=0x7f0a005d;
         public static final int setting_account_setting=0x7f0a0059;
+        public static final int setting_exit=0x7f0a0060;
         public static final int setting_item=0x7f0a0039;
         public static final int setting_item_left_icon=0x7f0a003a;
         public static final int setting_item_right_icon=0x7f0a003c;
@@ -277,6 +278,8 @@ public final class R {
         public static final int enter_course=0x7f07002c;
         public static final int enter_update=0x7f07002d;
         public static final int error_page=0x7f07002e;
+        public static final int exit=0x7f070034;
+        public static final int exit_login=0x7f070033;
         public static final int exit_tip=0x7f070031;
         public static final int feedback=0x7f070028;
         public static final int forget_password_tips=0x7f070014;

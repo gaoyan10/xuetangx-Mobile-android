@@ -52,4 +52,6 @@
     <string name="usage_help_url">https://www.xuetangx.com/about#contact</string>
     <string name="exit_tip">再按一次返回键退出程序</string>
     <string name="no_video">该章节没有视频列表</string>
+    <string name="exit_login">退出当前账户</string>
+    <string name="exit">退出</string>
 </resources>

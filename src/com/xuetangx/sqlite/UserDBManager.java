@@ -47,6 +47,21 @@ public class UserDBManager {
 		}
 		return false;
 	}
+	public boolean deleteUser() {
+		db.beginTransaction();
+		try {
+			db.execSQL("delete from current_user");
+			db.setTransactionSuccessful();
+			return true;
+		}catch(Exception e) {
+			Exception es = e;
+			e.printStackTrace();
+		} finally {
+			db.endTransaction();
+		}
+		return false;
+			
+	}
 	/**
 	 * get all message.
 	 * @return all message.
