@@ -17,8 +17,8 @@ public class CourseDBHelper extends SQLiteOpenHelper {
 		// TODO Auto-generated method stub
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_ENROLLMENT + 
 				"(username TEXT, course_id TEXT not null unique, display_name TEXT, display_org TEXT, display_coursenum TEXT, start TEXT, course_image_url TEXT)");
-		db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_COURSE_DATA + 
-				"(course_id TEXT not null unique, course_data TEXT)");
+		/*db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_COURSE_DATA + 
+				"(course_id TEXT not null unique, course_data TEXT)");*/
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_COURSE + 
 				"(username TEXT, course_id TEXT not null unique, display_name TEXT, display_org TEXT, display_coursenum TEXT, start TEXT, "
 				+ "advertised_start date, short_description TEXT ,course_image_url TEXT, marketing_video_url TEXT)");

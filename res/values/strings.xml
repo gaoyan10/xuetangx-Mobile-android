@@ -50,4 +50,6 @@
     <string name="error_page">https://www.xuetangx.com/404</string>
     <string name="about_me_url">https://www.xuetangx.com/about</string>
     <string name="usage_help_url">https://www.xuetangx.com/about#contact</string>
+    <string name="exit_tip">再按一次返回键退出程序</string>
+    <string name="no_video">该章节没有视频列表</string>
 </resources>

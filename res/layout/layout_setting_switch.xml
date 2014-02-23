@@ -12,6 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         android:src="@drawable/setting_left_icon"
         />
     <TextView 
@@ -25,11 +29,8 @@
         android:textSize="18sp"/>
     <com.xuetangx.ui.SwitchButton 
         android:id="@+id/setting_item_switch_right_icon"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:maxHeight="30dp"
-        android:maxWidth="55dp"
-        android:adjustViewBounds="true"
+        android:layout_width="20sp"
+        android:layout_height="35dp"
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"

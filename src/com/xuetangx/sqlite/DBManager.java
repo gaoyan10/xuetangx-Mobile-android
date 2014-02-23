@@ -12,8 +12,8 @@ public class DBManager {
 	private DBHelper helper;
 	protected SQLiteDatabase db;
 	private String tableName;
-	public DBManager(Context c,  String tableName) {
-		helper = new DBHelper(c, tableName, "");
+	public DBManager(Context c,  String tableName, String dbName) {
+		helper = new DBHelper(c, tableName, "", dbName);
 		db = helper.getWritableDatabase();
 		this.tableName = tableName;
 	}

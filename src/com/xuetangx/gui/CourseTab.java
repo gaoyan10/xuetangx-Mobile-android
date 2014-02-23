@@ -24,8 +24,10 @@ import android.widget.Toast;
 
 import com.xuetangx.R;
 import com.xuetangx.core.connect.NetConnector;
+import com.xuetangx.sqlite.CourseDBManager;
 import com.xuetangx.util.ConstantUtils;
 import com.xuetangx.util.SDUtils;
+import com.xuetangx.util.Utils;
 
 public class CourseTab extends BaseAdapter {
 	public static boolean isNewData = false;
@@ -118,6 +120,14 @@ public class CourseTab extends BaseAdapter {
 		holder.couseStartTime.setText((String)data.get(index).get("start"));
 		holder.enter.setText(context.getResources().getString(R.string.enter_course));
 		holder.update.setText(context.getResources().getString(R.string.enter_update));
+		Drawable updateImage= context.getResources().getDrawable(R.drawable.course_update);  
+		/// 这一步必须要做,否则不会显示.  
+		updateImage.setBounds(0, 0, Utils.dip2px(context, 20),Utils.dip2px(context, 20));  
+		holder.update.setCompoundDrawables(updateImage,null,null,null);  
+		Drawable enterImage= context.getResources().getDrawable(R.drawable.enter_course);  
+		/// 这一步必须要做,否则不会显示.  
+		enterImage.setBounds(0, 0, Utils.dip2px(context, 20),Utils.dip2px(context, 20));  
+		holder.enter.setCompoundDrawables(enterImage,null,null,null); 
 		OnClickListener enterListener = new OnClickListener(){
 
 			@Override
@@ -149,7 +159,15 @@ public class CourseTab extends BaseAdapter {
 		Toast.makeText(context, "enter course " + index, Toast.LENGTH_SHORT).show();
 		Intent intent = new Intent(context, CourseActivity.class);
 		Bundle b = new Bundle();
-		b.putString("title", "中国建筑史");
+		CourseDBManager db = new CourseDBManager(context, 0,ConstantUtils.COURSE_DATA_DETAIL);
+		HashMap<String, Object> courseData = db.queryOneCourseData((String)data.get(index).get("course_id"));
+		db.closeDB();
+		b.putString("title", data.get(index).get("display_name").toString());
+		b.putString("course_id", data.get(index).get("course_id").toString());
+		if(courseData != null) {
+			b.putString("data",courseData.get("json").toString());
+			b.putLong("time", (Long)courseData.get("time"));
+		}
 		intent.putExtras(b);
 		context.startActivity(intent);
 	}

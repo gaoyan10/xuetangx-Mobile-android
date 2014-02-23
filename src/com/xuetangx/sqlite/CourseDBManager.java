@@ -19,6 +19,12 @@ public class CourseDBManager extends DBManager {
 		db = helper.getWritableDatabase();
 		// TODO Auto-generated constructor stub
 	}
+	public CourseDBManager(Context c, int mode, String dbname) {
+		if(dbname.equals(ConstantUtils.COURSE_DATA_DETAIL)) {
+			CourseDataHelper helper = new CourseDataHelper(c);
+			db = helper.getWritableDatabase();
+		}
+	}
 	public void getDatabase() {
 		if(!db.isOpen()) {
 			db = helper.getWritableDatabase();
@@ -29,6 +35,7 @@ public class CourseDBManager extends DBManager {
 		ContentValues value = new ContentValues();
 		value.put("course_data", json);
 		value.put("course_id", courseID);
+		value.put("time", System.currentTimeMillis());
 		int num  = db.update(ConstantUtils.T_COURSE_DATA, value, "course_id = ?", new String[]{courseID});
 		if(num == 0) {
 			long num2 = db.insert(ConstantUtils.T_COURSE_DATA, null, value);
@@ -77,21 +84,28 @@ public class CourseDBManager extends DBManager {
 		List courseList = new ArrayList<HashMap<String, String>>();
 		return courseList;
 	}
-	public String queryOneCourseData(String courseID) {
+	public HashMap<String, Object> queryOneCourseData(String courseID) {
 		Cursor c = null;
+		HashMap<String, Object> data = new HashMap<String, Object>();
 		try{
-			c = db.query(ConstantUtils.T_COURSE_DATA, new String[]{"course_data"}, "course_id = ?", new String[]{courseID}, null, null, null, "1");
-			if( c.getColumnCount() == 0) {
+			c = db.query(ConstantUtils.T_COURSE_DATA, new String[]{"course_data", "time"}, "course_id = ?", new String[]{courseID}, null, null, null, "1");
+			if( c.getCount() != 1) {
 				return null;
 			}else {
-				return c.getString(c.getColumnIndex("course_data"));
+				 c.moveToFirst();
+				 data.put("json",c.getString(c.getColumnIndex("course_data")));
+				 data.put("time", c.getLong(c.getColumnIndex("time")));
+				 return data;
 			}
+		}catch(Exception e) {
+			e.printStackTrace();
 		}
 		finally{
 			if(c != null) {
 				c.close();
 			}
 		}
+		return null;
 	}
 	public HashMap<String, String> getEnrollmentItem(Cursor c) {
 		HashMap<String, String> map = new HashMap<String, String>();

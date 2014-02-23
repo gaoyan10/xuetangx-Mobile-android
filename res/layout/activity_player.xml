@@ -4,7 +4,7 @@
     android:layout_height="fill_parent" >
 
     <com.dreamwin.player.CCPlayer
-        android:id="@+id/videoview"
+        android:id="@+id/player_videoview"
         android:layout_width="fill_parent"
         android:layout_height="fill_parent" />
 
@@ -17,6 +17,7 @@
         android:minHeight="50dp" >
 
         <RelativeLayout
+            android:id="@+id/player_back_top"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentLeft="true"
@@ -28,24 +29,56 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
                 android:background="@drawable/player_title_btn_back"
                 android:clickable="true"
                 android:onClick="back"
+                android:padding="10dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/player_back" />
         </RelativeLayout>
 
-        <GridView
-            android:id="@+id/gridview"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="fill_parent"
             android:layout_height="fill_parent"
-            android:layout_alignParentRight="true"
-            android:layout_centerVertical="true"
-            android:columnWidth="40dp"
-            android:horizontalSpacing="10dp"
-            android:numColumns="auto_fit"
-            android:stretchMode="columnWidth"
-            android:verticalSpacing="10dp" >
-        </GridView>
+            android:layout_toRightOf="@id/player_back_top" >
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
+                android:layout_weight="1" >
+
+                <HorizontalScrollView
+                    android:layout_width="fill_parent"
+                    android:layout_height="fill_parent" >
+
+                    <LinearLayout
+                        android:id="@+id/playper_top_gridlayout"
+                        android:layout_width="300dp"
+                        android:layout_height="fill_parent" >
+
+                        <GridView
+                            android:id="@+id/player_gridview"
+                            android:layout_width="wrap_content"
+                            android:layout_height="fill_parent"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:columnWidth="40dp"
+                            android:horizontalSpacing="10dp"
+                            android:numColumns="auto_fit"
+                            android:stretchMode="columnWidth"
+                            android:verticalSpacing="10dp" >
+                        </GridView>
+                    </LinearLayout>
+                </HorizontalScrollView>
+            </LinearLayout>
+        </LinearLayout>
     </RelativeLayout>
 
     <RelativeLayout
@@ -70,9 +103,14 @@
                 android:layout_width="wrap_content"
                 android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
+                android:adjustViewBounds="true"
                 android:background="@drawable/player_title_btn_back"
                 android:clickable="true"
+                android:maxHeight="55dp"
+                android:maxWidth="55dp"
                 android:onClick="playerSwitch"
+                android:padding="12dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/player_pause" />
         </RelativeLayout>
 
@@ -102,8 +140,8 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:maxHeight="12.0dip"
-                android:minHeight="5.0dip" />
+                android:maxHeight="10.0dip"
+                android:minHeight="3.0dip" />
 
             <TextView
                 android:id="@+id/player_pass_total"
@@ -117,30 +155,59 @@
 
             <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
                 android:adjustViewBounds="true"
                 android:background="@drawable/player_title_btn_back"
                 android:clickable="true"
-                android:maxHeight="35dp"
-                android:maxWidth="35dp"
                 android:onClick="download"
+                android:padding="12dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/player_download" />
 
             <ImageButton
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
+                android:layout_height="fill_parent"
                 android:layout_centerInParent="true"
                 android:layout_marginLeft="5dp"
                 android:layout_marginRight="5dp"
                 android:adjustViewBounds="true"
                 android:background="@drawable/player_title_btn_back"
                 android:clickable="true"
-                android:maxHeight="35dp"
-                android:maxWidth="35dp"
                 android:onClick="voice"
+                android:padding="12dp"
+                android:scaleType="centerInside"
                 android:src="@drawable/player_voice" />
         </LinearLayout>
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/player_left_layout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/player_bottom_layout"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@id/player_top_layout"
+        android:background="#00ffffff" >
+
+        <ImageButton
+            android:id="@+id/player_middle_lock"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="2dp"
+            android:adjustViewBounds="true"
+            android:background="@drawable/no_color"
+            android:clickable="true"
+            android:maxHeight="45dp"
+            android:maxWidth="45dp"
+            android:minHeight="30dp"
+            android:minWidth="30dp"
+            android:onClick="lock"
+            android:scaleType="centerInside"
+            android:src="@drawable/player_lock" />
     </RelativeLayout>
 
     <RelativeLayout
@@ -149,6 +216,7 @@
         android:layout_height="wrap_content"
         android:layout_above="@id/player_bottom_layout"
         android:layout_below="@id/player_top_layout"
+        android:layout_toRightOf="@id/player_left_layout"
         android:background="#00ffffff" >
 
         <ImageButton
@@ -164,31 +232,14 @@
             android:onClick="playerSwitch"
             android:src="@drawable/player_middle_pause" />
 
-        <ImageButton
-            android:id="@+id/player_middle_lock"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
-            android:layout_centerVertical="true"
-            android:layout_margin="10dp"
-            android:adjustViewBounds="true"
-            android:background="@drawable/no_color"
-            android:clickable="true"
-            android:maxHeight="35dp"
-            android:maxWidth="35dp"
-            android:minHeight="30dp"
-            android:minWidth="30dp"
-            android:onClick="lock"
-            android:src="@drawable/player_lock" />
-
         <com.xuetangx.ui.VerticalSeekBar
             android:id="@+id/player_voice_bar"
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:padding="10dp" >
+            android:padding="10dp"
+            android:visibility="gone" >
         </com.xuetangx.ui.VerticalSeekBar>
     </RelativeLayout>
 

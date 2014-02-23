@@ -11,6 +11,7 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.support.v4.view.ViewPager.OnPageChangeListener;
 import android.view.Display;
+import android.view.KeyEvent;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.View;
@@ -40,6 +41,7 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	private ListView course;
 	private ProgressBar courseProgress, searchProgress;
 	private CourseDBManager db;
+	private long mExitTime; 
 	private Handler courseHandler = new Handler() {
 		public void handleMessage(Message msg) {
 			courseProgress.setVisibility(View.GONE);
@@ -48,7 +50,10 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 				courseAdapter.isNewData = true;
 				courseAdapter.notifyDataSetChanged();
 			}else{
-				Toast.makeText(MainActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();;
+				if(msg.what == -3) {
+					//登录已经过期，这种情况应该不会出现。
+				}
+				Toast.makeText(MainActivity.this, "获取数据失败", Toast.LENGTH_SHORT).show();
 			}
 		}
 	};
@@ -162,8 +167,10 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	}
 	public void setTabChange(int toIndex) {
 		tabText[toIndex].setTextColor(this.getResources().getColor(R.color.main_color));
+		//tabImage[toIndex].setBackgroundResource(pressImage[toIndex]);
 		tabImage[toIndex].setImageDrawable(this.getResources().getDrawable(pressImage[toIndex]));
 		tabText[currentIndex].setTextColor(this.getResources().getColor(R.color.black_text));
+		//tabImage[currentIndex].setBackgroundResource(normalImage[currentIndex]);
 		tabImage[currentIndex].setImageDrawable(this.getResources().getDrawable(normalImage[currentIndex]));
 		setCurrentIndex(toIndex);
 	}
@@ -223,5 +230,19 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		super.onDestroy();
 		db.closeDB();
 	}
+	 public boolean onKeyDown(int keyCode, KeyEvent event) {
+         if (keyCode == KeyEvent.KEYCODE_BACK) {
+                 if ((System.currentTimeMillis() - mExitTime) > 3000) {
+                        // Object mHelperUtils;
+                         Toast.makeText(this, this.getResources().getString(R.string.exit_tip), Toast.LENGTH_SHORT).show();
+                         mExitTime = System.currentTimeMillis();
+
+                 } else {
+                         finish();
+                 }
+                 return true;
+         }
+         return super.onKeyDown(keyCode, event);
+ }
 
 }

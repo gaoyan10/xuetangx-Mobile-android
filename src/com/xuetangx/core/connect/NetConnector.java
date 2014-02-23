@@ -177,13 +177,13 @@ public class NetConnector {
 
 	public boolean downloadImage(String url, File file) {
 		
-		HttpURLConnection conn = null;
+		HttpsURLConnection conn = null;
 		try {
 			if(!file.exists()) {
 				file.createNewFile();
 			}
 			URL urls = new URL(url);
-			conn = (HttpURLConnection)urls.openConnection();
+			conn = (HttpsURLConnection)urls.openConnection();
 			if(conn.getResponseCode() < 400) {
 				BufferedInputStream input = new BufferedInputStream(conn.getInputStream());
 				ByteArrayBuffer buffer = new ByteArrayBuffer(4096);

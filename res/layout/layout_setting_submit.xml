@@ -12,6 +12,10 @@
         android:layout_height="wrap_content"
         android:layout_alignParentLeft="true"
         android:layout_centerVertical="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         android:src="@drawable/setting_left_icon"
         />
     <TextView 
@@ -30,6 +34,10 @@
         android:layout_marginRight="15dp"
         android:layout_alignParentRight="true"
         android:layout_centerVertical="true"
+        android:maxWidth="20dp"
+        android:maxHeight="20dp"
+        android:adjustViewBounds="true"
+        android:scaleType="centerInside"
         android:src="@drawable/setting_item_right_icon"
         />
 </RelativeLayout>

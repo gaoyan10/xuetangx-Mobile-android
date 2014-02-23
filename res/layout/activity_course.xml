@@ -3,42 +3,58 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical" >
-    <RelativeLayout 
+
+    <RelativeLayout
         android:id="@+id/activity_course_title_layout"
-        android:layout_height="45dp"
         android:layout_width="fill_parent"
+        android:layout_height="45dp"
         android:background="@color/main_color"
-        android:gravity="center_vertical"
-        >
-        <ImageButton 
+        android:gravity="center_vertical" >
+
+        <ImageButton
             android:id="@+id/activity_course_title_back"
-            android:layout_width="50dp"
-            android:layout_height="fill_parent"
-            android:layout_centerVertical="true"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
             android:layout_marginRight="10dp"
+            android:maxHeight="45dp"
+            android:maxWidth="45dp"
+            android:adjustViewBounds="true"
+            android:padding="9dp"
             android:background="@drawable/title_btn_back"
             android:onClick="backButton"
-            android:src="@drawable/title_back_white"/>
-        <TextView 
+            android:scaleType="centerInside"
+            android:src="@drawable/player_back" />
+
+        <TextView
             android:id="@+id/activity_course_title_text"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:textSize="20sp"
             android:textColor="#FFFFFF"
-            /> 
+            android:textSize="20sp" />
+
+        <ProgressBar
+            android:id="@+id/activity_course_title_progress"
+            style="?android:attr/progressBarStyleSmallTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp" />
     </RelativeLayout>
-    <ExpandableListView 
+
+    <ExpandableListView
         android:id="@+id/activity_course_listview"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:groupIndicator="@null"
-        android:drawSelectorOnTop="false"
+        android:layout_marginTop="3dp"
         android:cacheColorHint="@color/white_color"
         android:divider="@color/black_text"
         android:dividerHeight="1dp"
-        android:layout_marginTop="3dp"
-        >
-        </ExpandableListView>
+        android:drawSelectorOnTop="false"
+        android:groupIndicator="@null" >
+    </ExpandableListView>
+
 </LinearLayout>

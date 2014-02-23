@@ -5,11 +5,10 @@ import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
 public class DBHelper extends SQLiteOpenHelper {
-	private static final String DB_NAME = "batterymessage.db";
 	private static final int VERSION = 1;
 	private String tableName;
 	private String rows;
-	public DBHelper (Context c, String table, String kind) {
+	public DBHelper (Context c, String table, String kind, String DB_NAME) {
 		super(c, DB_NAME, null, VERSION);
 		tableName = table;
 		rows = kind;

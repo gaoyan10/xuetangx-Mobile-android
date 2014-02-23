@@ -4,6 +4,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.widget.ImageView;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -48,6 +49,15 @@ public class SettingTab implements OnClickListener {
 		setViewText((TextView)aboutMe.findViewById(R.id.setting_item_text), R.string.about_me);
 		setViewText((TextView)usageHelp.findViewById(R.id.setting_item_text), R.string.usage_help);
 		
+		setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
+		setImageView((ImageView)videoHistory.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_history);
+		setImageView((ImageView)networkModel.findViewById(R.id.setting_item_switch_left_icon), R.drawable.tab_setting_wifi);
+		//setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
+		//setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
+		
+	}
+	public void setImageView(ImageView v, int id) {
+		v.setImageResource(id);
 	}
 	public void setViewText(TextView v, int id) {
 		v.setText(parentView.getResources().getString(id));

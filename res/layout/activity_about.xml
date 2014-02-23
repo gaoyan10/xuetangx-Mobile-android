@@ -12,14 +12,19 @@
         >
         <ImageButton 
             android:id="@+id/about_title_back"
-            android:layout_width="50dp"
-            android:layout_height="fill_parent"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
             android:layout_centerVertical="true"
             android:layout_alignParentLeft="true"
             android:layout_marginRight="10dp"
+            android:maxHeight="45dp"
+            android:maxWidth="45dp"
+            android:adjustViewBounds="true"
+            android:scaleType="centerInside"
+            android:padding="9dp"
             android:background="@drawable/title_btn_back"
             android:onClick="backButton"
-            android:src="@drawable/title_back_white"/>
+            android:src="@drawable/player_back"/>
         <TextView 
             android:id="@+id/about_title_text"
             android:layout_width="wrap_content"

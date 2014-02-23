@@ -31,6 +31,7 @@
         </activity>
         <activity
             android:name="com.xuetangx.gui.MainActivity"
+            android:windowSoftInputMode="adjustPan|stateHidden"
             >
         </activity>
         <activity 
@@ -59,5 +60,4 @@
     <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS"/>
     <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
-    <uses-permission android:name="android.permission.SET_ORIENTATION"/>
 </manifest>
