@@ -72,7 +72,7 @@ public class EnrollmentAnalyzer implements Analyzer{
 		params.put(ConstantUtils.KEY, Utils.getAPIKey(context));
 		params.put(ConstantUtils.ACCESS, Utils.getAccessToken());
 		NetConnector con = NetConnector.getInstance();
-		ResponseMessage msg = con.httpsGet(ConstantUtils.URL + ConstantUtils.GET_ENROLL_COURSES, params);
+		ResponseMessage msg = con.httpGet(ConstantUtils.URL + ConstantUtils.GET_ENROLL_COURSES, params);
 		return msg;
 	}
 	

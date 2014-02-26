@@ -1,5 +1,6 @@
 package com.xuetangx.gui;
 
+import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.AlertDialog.Builder;
 import android.content.Context;
@@ -85,6 +86,7 @@ public class SettingTab implements OnClickListener {
 		case R.id.setting_video_cache:
 			break;
 		case R.id.setting_video_history:
+			
 			break;
 		case R.id.setting_network_model:
 			break;
@@ -123,7 +125,7 @@ public class SettingTab implements OnClickListener {
 			   db.deleteUser();
 			   db.closeDB();
 			   context.startActivity(intent);
-			   
+			   ((Activity)context).finish(); 
 		   }
 		  });
 
@@ -136,4 +138,5 @@ public class SettingTab implements OnClickListener {
 
 		  builder.create().show();
 		 }
+	
 }

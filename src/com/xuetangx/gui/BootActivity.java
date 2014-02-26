@@ -90,7 +90,8 @@ public class BootActivity extends Activity {
 	 * download the new image if it exists.
 	 */
 	public void checkNewImage() {
-	    PreferenceUtils pre = new PreferenceUtils(this, ConstantUtils.USER_PRE);
+	    PreferenceUtils pre = new PreferenceUtils(this, ConstantUtils.DEFAULT_PRE);
+	    ConstantUtils.URL = pre.getPreference("url", "https://59.66.131.141:3000/");
 	    boolean isNewImage = pre.getBoolean(ConstantUtils.BOOT_IMAGE_DISPLAY, false);
 	    if(isNewImage) {
 	    	File file = new File(ConstantUtils.BOOT_IMAGE);

@@ -182,10 +182,30 @@
     </RelativeLayout>
 
     <RelativeLayout
+        android:id="@+id/player_srt_layout"
+        android:layout_width="fill_parent"
+        android:layout_height="40dp"
+        android:layout_above="@id/player_bottom_layout"
+        android:layout_alignParentBottom="true"
+        android:background="#00444444"
+        android:minHeight="40dp" >
+
+        <TextView
+            android:id="@+id/player_srt_text"
+            android:layout_width="wrap_content"
+            android:layout_height="fill_parent"
+            android:layout_centerInParent="true"
+            android:padding="5dp"
+            android:background="#00888888"
+            android:textColor="@color/white_color"
+            android:textSize="18sp" />
+    </RelativeLayout>
+
+    <RelativeLayout
         android:id="@+id/player_left_layout"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@id/player_bottom_layout"
+        android:layout_height="fill_parent"
+        android:layout_above="@id/player_srt_layout"
         android:layout_alignParentLeft="true"
         android:layout_below="@id/player_top_layout"
         android:background="#00ffffff" >
@@ -195,7 +215,6 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
-            android:layout_alignParentTop="true"
             android:layout_centerVertical="true"
             android:layout_margin="2dp"
             android:adjustViewBounds="true"
@@ -214,7 +233,7 @@
         android:id="@+id/player_middle_layout"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_above="@id/player_bottom_layout"
+        android:layout_above="@id/player_srt_layout"
         android:layout_below="@id/player_top_layout"
         android:layout_toRightOf="@id/player_left_layout"
         android:background="#00ffffff" >
@@ -239,6 +258,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
             android:padding="10dp"
+            android:max="100"
             android:visibility="gone" >
         </com.xuetangx.ui.VerticalSeekBar>
     </RelativeLayout>

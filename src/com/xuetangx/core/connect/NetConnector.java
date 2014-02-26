@@ -174,9 +174,45 @@ public class NetConnector {
 		writer.flush();
 		writer.close();
 	}
-
-	public boolean downloadImage(String url, File file) {
-		
+	public boolean httpDownloadFile(String url, File file) {
+		HttpURLConnection conn = null;
+		try {
+			if(!file.exists()) {
+				file.createNewFile();
+			}
+			URL urls = new URL(url);
+			conn = (HttpURLConnection)urls.openConnection();
+			if(conn.getResponseCode() < 400) {
+				BufferedInputStream input = new BufferedInputStream(conn.getInputStream());
+				ByteArrayBuffer buffer = new ByteArrayBuffer(4096);
+				int loc = 0;
+				byte[] b = new byte[1024];
+				while ((loc = input.read(b))!= -1) {
+					buffer.append(b, 0, loc);
+				}
+				FileOutputStream out = new FileOutputStream(file);
+				out.write(buffer.toByteArray());
+				out.flush();
+				out.close();
+				return true;
+			}else {
+				return false;
+			}
+		} catch (MalformedURLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			return false;
+		}finally{
+			if(conn != null) {
+				conn.disconnect();
+			}
+		}
+	}
+	public boolean downloadImage(String url, File file, String https) {
 		HttpsURLConnection conn = null;
 		try {
 			if(!file.exists()) {

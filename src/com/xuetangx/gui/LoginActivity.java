@@ -5,11 +5,14 @@ import java.util.HashMap;
 import java.util.List;
 
 import android.app.Activity;
+import android.app.AlertDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 import android.view.View;
+import android.widget.EditText;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
@@ -18,6 +21,8 @@ import com.xuetangx.core.analyzer.LoginAnalyzer;
 import com.xuetangx.core.connect.ResponseMessage;
 import com.xuetangx.sqlite.CourseDBManager;
 import com.xuetangx.ui.ClearEditText;
+import com.xuetangx.util.ConstantUtils;
+import com.xuetangx.util.PreferenceUtils;
 import com.xuetangx.util.Utils;
 /**
  * login activity.
@@ -71,7 +76,7 @@ public class LoginActivity extends Activity {
 		if(userName.length() == 0 || passWord.length() == 0) {
 			Toast.makeText(this, this.getResources().getString(R.string.login_error_input), Toast.LENGTH_SHORT).show();
 		} else {
-			if(Utils.checkEmail(userName)) {
+			//if(Utils.checkEmail(userName)) {
 				progressBar.setVisibility(View.VISIBLE);
 				analyzer.setContent(userName, passWord);
 				new Thread() {
@@ -88,14 +93,14 @@ public class LoginActivity extends Activity {
 						loginHandler.sendMessage(message);
 					}
 				}.start();
-			}else {
+			/*}else {
 				Toast.makeText(this, this.getResources().getString(R.string.login_error_email), Toast.LENGTH_SHORT).show();
-			}
+			}*/
 		}
 		
 	}
 	public void register(View view) {
-		
+		debugDialog();
 	}
 	public void getBackPassword(View view) {
 		Intent intent = new Intent(this, GoToBrowserActivity.class);
@@ -103,6 +108,33 @@ public class LoginActivity extends Activity {
 		b.putString("title", this.getResources().getString(R.string.forget_password_tips));
 		intent.putExtras(b);
 		startActivity(intent);
+	}
+	public void debugDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(LoginActivity.this);
+		final EditText ip = new EditText(LoginActivity.this);
+		builder.setTitle("请输入")  
+		.setIcon(android.R.drawable.ic_dialog_info)  
+		.setView(ip)  
+		.setPositiveButton("确定", new DialogInterface.OnClickListener() {
+
+			   @Override
+			   public void onClick(DialogInterface dialog, int which) {
+				   dialog.dismiss();
+				   PreferenceUtils pre = new PreferenceUtils(LoginActivity.this, ConstantUtils.DEFAULT_PRE);
+				   pre.putPreference("url",ip.getText().toString());
+				   ConstantUtils.URL = ip.getText().toString();
+			   }
+			  })  
+		.setNegativeButton("取消", new DialogInterface.OnClickListener() {
+
+			   @Override
+			   public void onClick(DialogInterface dialog, int which) {
+				   dialog.dismiss();
+				   
+				   
+			   }
+			  })  
+		.show();  
 	}
 	
 }

@@ -78,7 +78,7 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 				// TODO Auto-generated method stub
 				//Toast.makeText(context, childList.get(p).get(c).url.size() + "", Toast.LENGTH_LONG).show();
 				Intent intent = new Intent(context, VideoPlayerActivity.class);
-				ArrayList<String> d = (ArrayList<String>)childList.get(p).get(c).url;
+				ArrayList<String[]> d = (ArrayList<String[]>)childList.get(p).get(c).url;
 				ArrayList<HashMap<String,Object>> data = new ArrayList<HashMap<String, Object>>();
 				for(int i = 0; i < d.size(); i ++) {
 					HashMap<String, Object> item = new HashMap<String, Object>();
@@ -205,8 +205,12 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 		JSONArray array = getJSONArray(obj, "children");
 		for (int i = 0; i < array.length(); i++) {
 			JSONObject children = array.getJSONObject(i);
+			String[] video = new String[3];
 			if (children.getString("location").contains("/video")) {
-				data.add(children.getString("source"));
+				video[0] = children.getString("source");
+				video[1] = children.getString("track_zh");
+				video[2] = children.getString("track_en");
+				data.add(video);
 			}
 			analy(children, data);
 		}
@@ -236,14 +240,14 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 	}
 	private class VideoHolder{
 		public String title;
-		public List<String> url;
-		public VideoHolder(String t, List<String> u) {
+		public List<String[]> url; //string[] 0 source, 1 track_zh, 2 track_en
+		public VideoHolder(String t, List<String[]> u) {
 			title = t;
 			url = u;
 		}
 		public VideoHolder(){
 			title = "";
-			url = new ArrayList<String>();
+			url = new ArrayList<String[]>();
 		}
 	}
 

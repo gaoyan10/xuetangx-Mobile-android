@@ -37,7 +37,7 @@ public class BootImageReceiver extends BroadcastReceiver {
 					e.printStackTrace();
 				}
 			}
-			if(conn.downloadImage(url, file)) {
+			if(conn.httpDownloadFile(url, file)) {
 				pre.putInteger(ConstantUtils.BOOT_IMAGE, hash);
 			}
 		}

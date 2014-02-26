@@ -91,6 +91,9 @@ public class SDUtils {
 		}
 		return 0;
 	}
+	public static String readSDFile(String path, String name) {
+		return readFile(Environment.getExternalStorageDirectory().getAbsolutePath() + "/" + path, name);
+	}
 	public static String readFile(String path, String name) {
 		File file = new File (path, name);
 		StringBuilder sb = new StringBuilder();
@@ -99,6 +102,7 @@ public class SDUtils {
 			String content = reader.readLine();
 			while (content != null) {
 				sb.append(content);
+				sb.append('\n');
 				content = reader.readLine();
 			}
 			reader.close();
@@ -141,6 +145,30 @@ public class SDUtils {
               }
           }
          return 0;
+	}
+	public static boolean checkFile(String path, String name) {
+		File file = new File(path, name);
+		if (file.exists() && file.length() > 0) {
+			return true;
+		}else{
+			return false;
+		}
+	}
+	public static File getFile(String parent, String filename) {
+		File dir = new File(Environment.getExternalStorageDirectory(), parent);
+		if (!dir.exists()){
+			dir.mkdirs();
+		}
+		File file = new File(dir, filename);
+		if(!file.exists()) {
+			try {
+				file.createNewFile();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return file;
 	}
 
 }

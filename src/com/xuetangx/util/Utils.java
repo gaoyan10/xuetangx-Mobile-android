@@ -1,6 +1,7 @@
 package com.xuetangx.util;
 
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Random;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -49,7 +50,7 @@ public class Utils {
 		long begin = Long.valueOf(tmp);
 		//long begin = Long.getLong(tmp);
 		int expires = (Integer)(data.get("expires_in"));
-		if (expires * 600 * 1000 + begin <= (System.currentTimeMillis() - 1000 * 3600 * 24)) { //token is expires.
+		if (expires * 1000 + begin <= (System.currentTimeMillis() - 1000 * 3600 * 24)) { //token is expires.
 			accessToken = null;
 		}else{
 			accessToken = data.get("access_token").toString();
@@ -115,5 +116,8 @@ public class Utils {
     	Matcher matcher = regex.matcher(email);
     	boolean isMatched = matcher.matches();
     	return isMatched;
+    }
+    public static String getLanguage() {
+    	return Locale.getDefault().getLanguage();
     }
 }

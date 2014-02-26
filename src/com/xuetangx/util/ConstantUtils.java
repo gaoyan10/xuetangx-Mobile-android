@@ -3,7 +3,7 @@ package com.xuetangx.util;
 public class ConstantUtils {
 	public static int SCREENWIDTH;
 	public static int SCREENHEIGHT;
-	public static final String URL = "https://59.66.131.141:3000/";//"https://yangao.apiary.io";
+	public static String URL = "https://10.9.10.253:3000/";//"https://yangao.apiary.io";
 	public static final String KEY = "X-edx-api-key"; //注意X 大小写
 	public static final String ACCESS = "Authorization";
 	public static final String REGISTER = "edx-api/signup/v1/register";
@@ -18,6 +18,7 @@ public class ConstantUtils {
 	public static final String DEFAULT_PRE = "prefrence";
 	public static final String IMAGE_CACHE_PATH = "/.xuetangx/images";
 	public static final String VIDEO_CACHE_PATH = "/.xuetangx/video";
+	public static final String VIDEO_SRT_PATH = "/.xuetangx/srt";
 	public static final String SD_PATH = "save_path";
 	public static final String KEY_PATH = "secret_preference";
 	public static final String USER_PRE = "userdata";

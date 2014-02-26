@@ -68,7 +68,7 @@ public class CourseAnalyzer implements Analyzer {
 		params.put(ConstantUtils.KEY, Utils.getAPIKey(context));
 		params.put(ConstantUtils.ACCESS, Utils.getAccessToken());
 		NetConnector con = NetConnector.getInstance();
-		ResponseMessage msg = con.httpsGet(ConstantUtils.URL + ConstantUtils.COURSE_NAVIGATION + course, params);
+		ResponseMessage msg = con.httpGet(ConstantUtils.URL + ConstantUtils.COURSE_NAVIGATION + course, params);
 		return msg;
 	}
 	public void productData(String json) {

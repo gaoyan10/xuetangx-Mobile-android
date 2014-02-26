@@ -83,10 +83,10 @@ public class LoginAnalyzer implements Analyzer {
 		params.put(ConstantUtils.KEY, Utils.getAPIKey(context));
 		params.put("Content-Type", "application/x-www-form-urlencoded");
 		StringBuilder sb = new StringBuilder();
-		sb.append("client_id=test_id&client_secret=test_secret&grant_type=password&");
+		sb.append("client_id=5dd0cac824fe2f9b2f7d&client_secret=c2f7c92ccd29d3da54f2b045661ea657f29a9303&grant_type=password&");
 		sb.append("&username=" + username + "&password=" + password);
 		NetConnector net = NetConnector.getInstance();
-		ResponseMessage response = net.httpsPost(ConstantUtils.URL + ConstantUtils.LOGIN, sb.toString(), params);
+		ResponseMessage response = net.httpPost(ConstantUtils.URL + ConstantUtils.LOGIN, sb.toString(), params);
 		return response;
 	}
 

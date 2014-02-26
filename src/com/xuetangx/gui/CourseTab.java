@@ -176,7 +176,7 @@ public class CourseTab extends BaseAdapter {
 	} 
 	public void viewSetImage(RelativeLayout view, String url) {
 		File image = new File(SDUtils.getImageDir(context), url.hashCode() + "");
-		if (image.exists()) {
+		if (image.exists() && image.length() > 0) {
 			view.setBackgroundDrawable(Drawable.createFromPath(image.getAbsolutePath()));
 		}else{
 			view.setBackgroundResource(R.drawable.images_course_image);
@@ -186,7 +186,11 @@ public class CourseTab extends BaseAdapter {
 				new Thread() {
 					public void run(){
 						File imageFile = new File(SDUtils.getImageDir(context), u.hashCode() + "");
-						boolean suc = NetConnector.getInstance().downloadImage(ConstantUtils.URL + u, imageFile);
+						String url = ConstantUtils.URL + u;
+						if (u.charAt(0) == '/') {
+							url = ConstantUtils.URL + u.substring(1, u.length());
+						}
+						boolean suc = NetConnector.getInstance().httpDownloadFile(url, imageFile);
 						if (suc) {
 							Message msg = imageHandler.obtainMessage();
 							msg.what = 0;
