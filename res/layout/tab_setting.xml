@@ -49,7 +49,7 @@
 	<include 
 	    android:id="@+id/setting_network_model"
 	    layout="@layout/layout_setting_switch"
-	    />"
+	    />
 	<TextView 
 	    android:id="@+id/setting_account_about"
 	    android:layout_width="fill_parent"

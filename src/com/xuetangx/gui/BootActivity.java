@@ -13,6 +13,8 @@ import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -33,6 +35,7 @@ import com.xuetangx.util.Utils;
 public class BootActivity extends Activity {
 	private RelativeLayout newPage;
 	private RelativeLayout defaultPage;
+	private final int TOMAIN = 0;
 	
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -60,17 +63,33 @@ public class BootActivity extends Activity {
 		startActivity(intent);
 		this.finish();
 	}
+	private Handler bootHandler = new Handler() {
+		@Override
+		public void handleMessage(Message msg) {
+			if (msg.what == TOMAIN) {
+				startActivity((Intent)msg.obj); 
+				BootActivity.this.finish();
+			}
+		}
+	};
 	public void openLoginActivity() {
 		Utils.initialUserMessage(this);
 		if (Utils.getAccessToken() != null) { //access token 未过期。
-			CourseDBManager db = new CourseDBManager(BootActivity.this);
-			db.getDatabase();
-			List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
-			Intent intent = new Intent (BootActivity.this, MainActivity.class);
-			intent.putExtra("data",(ArrayList)data);
-			startActivity(intent); 
-			db.closeDB();
-			this.finish();
+			new Thread() {
+				public void run() {
+					CourseDBManager db = new CourseDBManager(BootActivity.this);
+					db.getDatabase();
+					List<HashMap<String,String>> data = db.queryEnrollment(Utils.getUserName());
+					Intent intent = new Intent (BootActivity.this, MainActivity.class);
+					intent.putExtra("data",(ArrayList)data);
+					db.closeDB();
+					Message msg = bootHandler.obtainMessage();
+					msg.obj = intent;
+					msg.what = TOMAIN;
+					bootHandler.sendMessageDelayed(msg, 500);
+				}
+			}.start();
+			
 		}else{
 			Timer timer = new Timer();
 			timer.schedule(new TimerTask() {

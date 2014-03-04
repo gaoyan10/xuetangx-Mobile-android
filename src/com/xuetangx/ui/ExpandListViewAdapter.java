@@ -10,6 +10,7 @@ import org.json.JSONObject;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
@@ -27,11 +28,16 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 	private List<List<VideoHolder>> childList;
 	private Context context;
 	private LayoutInflater mInflater;
+	private String courseName;
 	public ExpandListViewAdapter(Context c) {
 		parentList = new ArrayList<String>();
 		childList = new ArrayList<List<VideoHolder>>();
 		context = c;
 		mInflater = LayoutInflater.from(context);
+		courseName = "";
+	}
+	public void setCourseName(String s) {
+		courseName = s;
 	}
 	class ViewHolder {
 		TextView text;
@@ -88,6 +94,9 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 				}
 				if(d.size() > 0) {
 					intent.putExtra("data", data);
+					Bundle b = new Bundle();
+					b.putString("title", courseName + "第" + (p+1) + "章" + "第" + (c+1) + "节");
+					intent.putExtras(b);
 				}
 				context.startActivity(intent);
 			}
@@ -204,15 +213,20 @@ public class ExpandListViewAdapter extends BaseExpandableListAdapter {
 
 		JSONArray array = getJSONArray(obj, "children");
 		for (int i = 0; i < array.length(); i++) {
-			JSONObject children = array.getJSONObject(i);
-			String[] video = new String[3];
-			if (children.getString("location").contains("/video")) {
-				video[0] = children.getString("source");
-				video[1] = children.getString("track_zh");
-				video[2] = children.getString("track_en");
-				data.add(video);
+			try{
+				JSONObject children = array.getJSONObject(i);
+				String[] video = new String[3];
+				if (children.getString("location").contains("/video")) {
+					video[0] = children.getString("source");
+					video[1] = children.getString("track_zh");
+					video[2] = children.getString("track_en");
+					data.add(video);
+				}
+				analy(children, data);
+			}catch(JSONException e) {
+				e.printStackTrace();
+				continue;
 			}
-			analy(children, data);
 		}
 	}
 	public void analyVideoJson(JSONObject obj, List<VideoHolder> data) throws JSONException {

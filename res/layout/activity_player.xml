@@ -38,47 +38,47 @@
                 android:src="@drawable/player_back" />
         </RelativeLayout>
 
-        <LinearLayout
-            android:layout_width="fill_parent"
-            android:layout_height="fill_parent"
-            android:layout_toRightOf="@id/player_back_top" >
+        <TextView
+            android:id="@+id/player_top_title"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:ellipsize="marquee"
+            android:focusable="true"
+            android:singleLine="true"
+            android:focusableInTouchMode="true"
+            android:marqueeRepeatLimit="marquee_forever"
+            android:scrollHorizontally="true"
+            android:textColor="@android:color/white"
+            android:textSize="15sp" />
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1" >
-            </LinearLayout>
+        <!--
+             <LinearLayout
+            android:id="@+id/playper_top_gridlayout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:maxWidth="300dp"
+            android:adjustViewBounds="true"
+            android:layout_alignParentRight="true"
+           >
+        -->
 
-            <LinearLayout
-                android:layout_width="0dp"
-                android:layout_height="fill_parent"
-                android:layout_weight="1" >
-
-                <HorizontalScrollView
-                    android:layout_width="fill_parent"
-                    android:layout_height="fill_parent" >
-
-                    <LinearLayout
-                        android:id="@+id/playper_top_gridlayout"
-                        android:layout_width="300dp"
-                        android:layout_height="fill_parent" >
-
-                        <GridView
-                            android:id="@+id/player_gridview"
-                            android:layout_width="wrap_content"
-                            android:layout_height="fill_parent"
-                            android:layout_alignParentRight="true"
-                            android:layout_centerVertical="true"
-                            android:columnWidth="40dp"
-                            android:horizontalSpacing="10dp"
-                            android:numColumns="auto_fit"
-                            android:stretchMode="columnWidth"
-                            android:verticalSpacing="10dp" >
-                        </GridView>
-                    </LinearLayout>
-                </HorizontalScrollView>
-            </LinearLayout>
-        </LinearLayout>
+        <GridView
+            android:id="@+id/player_gridview"
+            android:layout_toRightOf="@id/player_top_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentRight="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="20dp"
+            android:layout_marginLeft="30dp"
+            android:columnWidth="40dp"
+            android:horizontalSpacing="10dp"
+            android:numColumns="auto_fit"
+            android:stretchMode="columnWidth"
+            android:verticalSpacing="10dp" >
+        </GridView>
+        <!-- </LinearLayout> -->
     </RelativeLayout>
 
     <RelativeLayout
@@ -195,8 +195,8 @@
             android:layout_width="wrap_content"
             android:layout_height="fill_parent"
             android:layout_centerInParent="true"
-            android:padding="5dp"
             android:background="#00888888"
+            android:padding="5dp"
             android:textColor="@color/white_color"
             android:textSize="18sp" />
     </RelativeLayout>
@@ -257,8 +257,8 @@
             android:layout_height="fill_parent"
             android:layout_alignParentRight="true"
             android:layout_marginRight="10dp"
-            android:padding="10dp"
             android:max="100"
+            android:padding="10dp"
             android:visibility="gone" >
         </com.xuetangx.ui.VerticalSeekBar>
     </RelativeLayout>

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <include
+        android:id="@+id/update_title"
+        android:layout_alignParentTop="true"
+        layout="@layout/layout_title" />
+
+    <LinearLayout
+        android:id="@+id/update_btn"
+        android:layout_width="fill_parent"
+        android:layout_height="55dp"
+        android:layout_alignParentBottom="true"
+        android:background="@drawable/main_bottom_normal" >
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/btn_style_plain"
+            android:text="@string/refresh_message"
+            android:onClick="refresh"
+            android:clickable="true"
+            android:textColor="@color/black_text"
+            android:textSize="17sp" />
+    </LinearLayout>
+
+    <ListView
+        android:id="@+id/update_list_message"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_above="@id/update_btn"
+        android:layout_below="@id/update_title"
+        android:layout_marginTop="5dp"
+        android:divider="@null" >
+    </ListView>
+
+</RelativeLayout>

@@ -39,7 +39,7 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	private SettingTab setting;
 	private CourseTab courseAdapter;
 	private ListView course;
-	private ProgressBar courseProgress, searchProgress;
+	private ProgressBar courseProgress;//, searchProgress;
 	private CourseDBManager db;
 	private long mExitTime; 
 	private Handler courseHandler = new Handler() {
@@ -124,22 +124,12 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		setting = new SettingTab(this,view3);
 		courseAdapter = new CourseTab(this, view1);
 		ArrayList data = (ArrayList)getIntent().getSerializableExtra("data");
-		/*courseAdapter.getData();courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();
-		courseAdapter.getData();*/
 		courseAdapter.setData(data);
 		course = (ListView)view1.findViewById(R.id.course_listview);
 		courseProgress = (ProgressBar)view1.findViewById(R.id.tab_course_title_progress);
-		searchProgress = (ProgressBar)view2.findViewById(R.id.tab_search_title_progress);
 		course.setAdapter(courseAdapter);
 		
 		db = new CourseDBManager(this);
-		
-		//refresh data.
 		getNewEnrollment();
 	}
 	public void getScreenMessage() {
@@ -167,10 +157,8 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	}
 	public void setTabChange(int toIndex) {
 		tabText[toIndex].setTextColor(this.getResources().getColor(R.color.main_color));
-		//tabImage[toIndex].setBackgroundResource(pressImage[toIndex]);
 		tabImage[toIndex].setImageDrawable(this.getResources().getDrawable(pressImage[toIndex]));
 		tabText[currentIndex].setTextColor(this.getResources().getColor(R.color.black_text));
-		//tabImage[currentIndex].setBackgroundResource(normalImage[currentIndex]);
 		tabImage[currentIndex].setImageDrawable(this.getResources().getDrawable(normalImage[currentIndex]));
 		setCurrentIndex(toIndex);
 	}

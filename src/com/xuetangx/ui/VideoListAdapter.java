@@ -1,28 +1,18 @@
 package com.xuetangx.ui;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import com.xuetangx.R;
-import com.xuetangx.core.connect.NetConnector;
-import com.xuetangx.sqlite.CourseDBManager;
-import com.xuetangx.util.ConstantUtils;
-import com.xuetangx.util.SDUtils;
-import com.xuetangx.util.Utils;
 
 public class VideoListAdapter extends BaseAdapter {
 	public static boolean isNewData = false;
@@ -41,8 +31,8 @@ public class VideoListAdapter extends BaseAdapter {
 	public void setCurrentIndex(int i) {
 		currentIndex = i;
 	}
-	public void setData(ArrayList data) {
-		this.data = data;
+	public void setData(List data) {
+		this.data = ( ArrayList<Map<String, Object>>)data;
 	}
 	@Override
 	public int getCount() {

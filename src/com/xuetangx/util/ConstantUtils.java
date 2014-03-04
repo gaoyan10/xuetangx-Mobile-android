@@ -6,6 +6,7 @@ public class ConstantUtils {
 	public static String URL = "https://10.9.10.253:3000/";//"https://yangao.apiary.io";
 	public static final String KEY = "X-edx-api-key"; //注意X 大小写
 	public static final String ACCESS = "Authorization";
+	public static final String UPDATE = "edx-api/updates/v1/";
 	public static final String REGISTER = "edx-api/signup/v1/register";
 	public static final String LOGIN = "edx-api/auth/v1/oauth2/access_token";//"/auth/login";
 	public static final String ENROLL = "edx-api/enrollments/v1/";
@@ -33,4 +34,5 @@ public class ConstantUtils {
 	public static final String T_USER = "current_user";
 	public static final String T_HISTORY = "history";
 	public static final String T_DOWNLOAD = "download";
+	public static final String T_UPDATE = "update_message";
 }

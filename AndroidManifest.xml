@@ -42,6 +42,14 @@
             android:name="com.xuetangx.gui.CourseActivity"
             >
         </activity>
+        <activity 
+            android:name="com.xuetangx.gui.UpdateActivity"
+            >
+        </activity>
+        <activity
+            android:name="com.xuetangx.gui.UpdateDetailActivity"
+            >
+        </activity>
         <activity
             android:name="com.xuetangx.gui.VideoPlayerActivity"
             android:screenOrientation="landscape"

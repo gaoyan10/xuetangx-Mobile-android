@@ -44,6 +44,7 @@ public class CourseActivity extends Activity {
 		loading = (ProgressBar)findViewById(R.id.activity_course_title_progress);
 		adapter = new ExpandListViewAdapter(this);
 		getIntentData();
+		//adapter = new ExpandListViewAdapter(this,courseName);
 		//adapter.getTestData();
 		chapter.setAdapter(adapter);
 		getNewCourseData();
@@ -58,6 +59,9 @@ public class CourseActivity extends Activity {
 			courseName = title.getString("title");
 			if(courseName != null) {
 				courseTitle.setText(courseName);
+				adapter.setCourseName(courseName);
+			}else {
+				courseName = "";
 			}
 			String json = title.getString("data");
 			if(json != null) {

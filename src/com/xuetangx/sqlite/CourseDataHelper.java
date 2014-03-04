@@ -16,6 +16,8 @@ public class CourseDataHelper extends SQLiteOpenHelper{
 		// TODO Auto-generated method stub
 		db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_COURSE_DATA + 
 				"(course_id TEXT not null unique, course_data TEXT, time TEXT)");
+		db.execSQL("CREATE TABLE IF NOT EXISTS " + ConstantUtils.T_UPDATE + 
+				"(course_id TEXT not null, id TEXT not null unique, content TEXT, date TEXT, is_show INTEGER, no INTEGER not null unique)");
 	}
 	@Override
 	public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {

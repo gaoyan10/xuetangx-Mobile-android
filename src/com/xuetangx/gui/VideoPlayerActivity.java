@@ -47,7 +47,7 @@ public class VideoPlayerActivity extends Activity {
 	private RelativeLayout top, middle, bottom, left;
 	private ImageButton middleSwitch, bottomSwitch, lock;
 	private SeekBar voice, progress;
-	private TextView passSecond, totalSecond, srtText;
+	private TextView passSecond, totalSecond, srtText, videoTitle;
 	private GridView videoList;
 	private CCPlayer player;
 	private List<HashMap<String, Object>> videoData = null;
@@ -71,6 +71,7 @@ public class VideoPlayerActivity extends Activity {
 	private String srtEnUrl = "";
 	private String srtZhUrl = "";
 	private SrtObject srt;
+	private String chapter;
 	private Handler playHandler = new Handler() {
 		@Override
 		public void handleMessage(Message message) {
@@ -133,9 +134,13 @@ public class VideoPlayerActivity extends Activity {
 		} else {
 			videoData = (ArrayList<HashMap<String, Object>>) b;
 			videoAdapter = new VideoListAdapter(this);
+			videoAdapter.setData(videoData);
+			videoAdapter.setCurrentIndex(0);
 			videoList.setAdapter(videoAdapter);
 			player.setVideoPath(((String[])videoData.get(0).get("source"))[0].toString());
+			chapter = getIntent().getExtras().getString("title");
 			currentVideoIndex = 0;
+			videoTitle.setText(chapter + " " + currentVideoIndex);
 			loadSrt(0);
 			player.requestFocus();
 			// 开始播放
@@ -161,6 +166,7 @@ public class VideoPlayerActivity extends Activity {
 		videoList = (GridView) findViewById(R.id.player_gridview);
 		player = (CCPlayer) findViewById(R.id.player_videoview);
 		srtText = (TextView) findViewById(R.id.player_srt_text);
+		videoTitle = (TextView) findViewById(R.id.player_top_title);
 		srt = new SrtObject();
 	}
 
@@ -503,5 +509,10 @@ public class VideoPlayerActivity extends Activity {
 				
 			}
 		}
+	}
+	@Override
+	public void onDestroy() {
+		playHandler.removeMessages(PROGRESS_CHANGE);
+		super.onDestroy();
 	}
 }

@@ -47,6 +47,11 @@
     <string name="setting">个人设置</string>
     <string name="enter_course">进入课程</string>
     <string name="enter_update">查看更新</string>
+    <string name="register_course">加入课程</string>
+    <string name="read_introduce">查看介绍</string>
+    <string name="refresh_message">点击刷新通知</string>
+    <string name="load_message_failed">加载最新通知失败</string>
+    <string name="click_for_more">点击查看更多</string>
     <string name="error_page">https://www.xuetangx.com/404</string>
     <string name="about_me_url">https://www.xuetangx.com/about</string>
     <string name="usage_help_url">https://www.xuetangx.com/about#contact</string>
