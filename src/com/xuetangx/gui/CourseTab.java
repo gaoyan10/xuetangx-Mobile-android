@@ -32,7 +32,7 @@ import com.xuetangx.util.Utils;
 
 public class CourseTab extends BaseAdapter {
 	public static boolean isNewData = false;
-	public double height = 5;
+	public double height = 6;
 	public double width = 2/3;
 	public final class ViewHolder {
 		public ImageView courseImage;
@@ -50,13 +50,13 @@ public class CourseTab extends BaseAdapter {
 			}
 		}
 	};
-	protected ArrayList<Map<String, Object>> data;
-	private Context context;
-	private View parent;
+	protected ArrayList<HashMap<String, Object>> data;
+	protected Context context;
+	protected View parent;
 	public CourseTab(Context c, View p) {
 		context = c;
 		parent = p;
-		data = new ArrayList<Map<String, Object>>();
+		data = new ArrayList<HashMap<String, Object>>();
 	}
 	public CourseTab() {
 		

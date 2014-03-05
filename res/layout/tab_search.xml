@@ -10,6 +10,21 @@
         android:background="@color/main_color"
         android:gravity="center_vertical"
         >
+        <ImageButton
+            android:id="@+id/tab_search_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentLeft="true"
+            android:layout_centerVertical="true"
+            android:layout_marginRight="10dp"
+            android:minHeight="45dp"
+            android:minWidth="45dp"
+            android:adjustViewBounds="true"
+            android:padding="9dp"
+            android:background="@drawable/title_btn_back"
+            android:onClick="search"
+            android:scaleType="centerInside"
+            android:src="@drawable/search_left_icon" />
         <TextView 
             android:id="@+id/tab_search_title_text"
             android:layout_width="wrap_content"
@@ -17,7 +32,7 @@
             android:layout_centerInParent="true"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:text="@string/xuetangx"
+            android:text="@string/total_course"
             />
         <ProgressBar 
             android:id="@+id/tab_search_title_progress"
@@ -33,18 +48,20 @@
     <com.xuetangx.ui.ClearEditText
         android:id="@+id/tab_search_input"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="40dp"
         android:layout_marginLeft="20dp"
         android:layout_marginRight="20dp"
-        android:layout_marginTop="10dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="10dp"
         android:background="@drawable/login_editbox"
         android:drawableLeft="@drawable/search_left_icon"
+        android:visibility="gone"
         />
     <ListView
         android:id="@+id/tab_search_course_list"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
         >
     </ListView>
 

@@ -14,6 +14,7 @@
             android:layout_height="wrap_content"
             android:maxWidth="500dp"
             android:maxHeight="400dp"
+            android:adjustViewBounds="true"
             android:layout_centerInParent="true"
             android:layout_centerHorizontal="true"
             android:layout_centerVertical="true"

@@ -1,4 +1,4 @@
-package com.xuetangx.browser;
+package com.xuetangx.plugin;
 
 import android.content.Context;
 import android.graphics.Bitmap;

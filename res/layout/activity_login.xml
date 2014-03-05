@@ -11,20 +11,21 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:layout_marginBottom="20dp"
-        android:gravity="center"
+        android:gravity="top"
         android:orientation="vertical"
         >
 
-        <TextView
-            android:id="@+id/login_xuetangx_text"
-            android:layout_width="fill_parent"
+        <ImageView
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_centerHorizontal="true"
-            android:layout_marginBottom="45dp"
-            android:gravity="center"
-            android:text="@string/xuetangx"
-            android:textColor="#EEEEEE"
-            android:textSize="35sp" />
+            android:maxWidth="300dp"
+            android:maxHeight="150dp"
+            android:adjustViewBounds="true"
+            android:layout_marginTop="50dp"
+            android:layout_marginBottom="20dp"
+            android:layout_gravity="center"
+            android:scaleType="centerInside"
+            android:src="@drawable/logo" />
         
         <com.xuetangx.ui.ClearEditText 
             android:layout_width="fill_parent"

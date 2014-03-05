@@ -71,7 +71,6 @@ public class CourseDBManager extends DBManager {
 			db.endTransaction();
 		}
 	}
-
 	private boolean refresh(List<HashMap<String, Object>> data, String table) {
 		getDatabase();
 		db.beginTransaction();
@@ -154,7 +153,7 @@ public class CourseDBManager extends DBManager {
 			db.endTransaction();
 		}
 	}
-	public List<HashMap<String, String>> queryCourseList(String username) {
+	public List<HashMap<String, Object>> queryCourseList(String username) {
 		List courseList = new ArrayList<HashMap<String, String>>();
 		Cursor c = null;
 		try {

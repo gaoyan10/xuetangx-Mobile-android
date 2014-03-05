@@ -37,6 +37,7 @@
     <string name="video_history">观看历史</string>
     <string name="video_network_mobile">允许2G/3G下观看视频</string>
     <string name="video_cache">缓存视频</string>
+    <string name="setting_tools">工具管理</string>
     <string name="about_me">关于我们</string>
     <string name="usage_help">使用帮助</string>
     <string name="about">关于</string>
@@ -45,6 +46,8 @@
     <string name="mycourse">我的课程</string>
     <string name="search">发现课程</string>
     <string name="setting">个人设置</string>
+    <string name="person_preference">个人设置</string>
+    <string name="total_course">全部课程</string>
     <string name="enter_course">进入课程</string>
     <string name="enter_update">查看更新</string>
     <string name="register_course">加入课程</string>

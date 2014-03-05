@@ -26,7 +26,7 @@ import com.xuetangx.util.Utils;
 public class SettingTab implements OnClickListener {
 	private TextView account;
 	private TextView about;
-	private RelativeLayout videoCache, videoHistory, networkModel, usageHelp, aboutMe, exit;
+	private RelativeLayout videoCache, videoHistory, tools, networkModel, usageHelp, aboutMe, exit;
 	private SwitchButton networkSwitch;
 	private Context context;
 	private View parentView;
@@ -42,6 +42,7 @@ public class SettingTab implements OnClickListener {
 		about = (TextView)parentView.findViewById(R.id.setting_account_about);
 		videoCache = (RelativeLayout)parentView.findViewById(R.id.setting_video_cache);
 		videoHistory = (RelativeLayout)parentView.findViewById(R.id.setting_video_history);
+		tools = (RelativeLayout) parentView.findViewById(R.id.setting_video_tools);
 		networkModel = (RelativeLayout)parentView.findViewById(R.id.setting_network_model);
 		exit = (RelativeLayout)parentView.findViewById(R.id.setting_exit);
 		usageHelp = (RelativeLayout)parentView.findViewById(R.id.setting_usage_help);
@@ -57,10 +58,12 @@ public class SettingTab implements OnClickListener {
 		setViewText((TextView)exit.findViewById(R.id.setting_item_text),R.string.exit_login);
 		setViewText((TextView)aboutMe.findViewById(R.id.setting_item_text), R.string.about_me);
 		setViewText((TextView)usageHelp.findViewById(R.id.setting_item_text), R.string.usage_help);
+		setViewText((TextView)tools.findViewById(R.id.setting_item_text), R.string.setting_tools);
 		
 		setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
 		setImageView((ImageView)videoHistory.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_history);
 		setImageView((ImageView)networkModel.findViewById(R.id.setting_item_switch_left_icon), R.drawable.tab_setting_wifi);
+		setImageView((ImageView)tools.findViewById(R.id.setting_item_left_icon), R.drawable.setting_tools);
 		//setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
 		//setImageView((ImageView)videoCache.findViewById(R.id.setting_item_left_icon), R.drawable.tab_setting_videocache);
 		
@@ -74,6 +77,7 @@ public class SettingTab implements OnClickListener {
 	public void setLayoutListener() {
 		videoCache.setOnClickListener(this);
 		videoHistory.setOnClickListener(this);
+		tools.setOnClickListener(this);
 		networkModel.setOnClickListener(this);
 		exit.setOnClickListener(this);
 		usageHelp.setOnClickListener(this);
@@ -87,6 +91,8 @@ public class SettingTab implements OnClickListener {
 			break;
 		case R.id.setting_video_history:
 			
+			break;
+		case R.id.setting_video_tools:
 			break;
 		case R.id.setting_network_model:
 			break;

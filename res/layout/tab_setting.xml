@@ -17,7 +17,7 @@
             android:layout_centerInParent="true"
             android:textSize="20sp"
             android:textColor="#FFFFFF"
-            android:text="@string/xuetangx"
+            android:text="@string/person_preference"
             />
     </RelativeLayout>
     <ScrollView
@@ -46,6 +46,10 @@
 	    android:id="@+id/setting_video_history"
 	    layout="@layout/layout_setting_submit"
 	    />	
+	<include 
+	    android:id="@+id/setting_video_tools"
+	    layout="@layout/layout_setting_submit"
+	    />
 	<include 
 	    android:id="@+id/setting_network_model"
 	    layout="@layout/layout_setting_switch"

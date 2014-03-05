@@ -27,7 +27,7 @@
         </activity>
         <activity 
             android:name="com.xuetangx.gui.LoginActivity"
-            android:windowSoftInputMode="stateHidden|adjustResize">
+            android:windowSoftInputMode="stateHidden|adjustPan">
         </activity>
         <activity
             android:name="com.xuetangx.gui.MainActivity"

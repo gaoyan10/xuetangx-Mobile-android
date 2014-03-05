@@ -8,7 +8,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 import com.xuetangx.R;
-import com.xuetangx.browser.DefaultWebView;
+import com.xuetangx.plugin.DefaultWebView;
 /**
  * 
  * @author gaoyansansheng@gmail.com

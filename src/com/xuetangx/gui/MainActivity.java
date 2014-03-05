@@ -38,6 +38,7 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 	private int[] pressImage;
 	private SettingTab setting;
 	private CourseTab courseAdapter;
+	private FindCourseTab findCourse;
 	private ListView course;
 	private ProgressBar courseProgress;//, searchProgress;
 	private CourseDBManager db;
@@ -123,6 +124,7 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		pager.setAdapter(mPagerAdapter);
 		setting = new SettingTab(this,view3);
 		courseAdapter = new CourseTab(this, view1);
+		
 		ArrayList data = (ArrayList)getIntent().getSerializableExtra("data");
 		courseAdapter.setData(data);
 		course = (ListView)view1.findViewById(R.id.course_listview);
@@ -131,6 +133,10 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
 		
 		db = new CourseDBManager(this);
 		getNewEnrollment();
+		
+		findCourse = new FindCourseTab(this, view2, 0);
+		findCourse.getNewCourse();
+		
 	}
 	public void getScreenMessage() {
 		Display display = getWindowManager().getDefaultDisplay();
@@ -231,6 +237,9 @@ public class MainActivity extends Activity implements OnClickListener, OnPageCha
                  return true;
          }
          return super.onKeyDown(keyCode, event);
- }
+	 }
+	 public void search(View view) {
+		 findCourse.search(view);
+	 }
 
 }
